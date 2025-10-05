@@ -2,7 +2,12 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -14,8 +19,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        serif: ['Playfair Display', 'serif'],
-        sans: ['Inter', 'sans-serif'],
+        serif: ["var(--font-serif)", "Playfair Display", "Georgia", "serif"],
+        sans: ["var(--font-sans)", "Inter", "system-ui", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -51,12 +56,12 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        'warm-brown': "hsl(var(--warm-brown))",
-        'mustard': "hsl(var(--mustard))",
-        'forest-green': "hsl(var(--forest-green))",
-        'coral': "hsl(var(--coral))",
-        'cream': "hsl(var(--cream))",
-        'light-peach': "hsl(var(--light-peach))",
+        "warm-brown": "hsl(var(--warm-brown))",
+        mustard: "hsl(var(--mustard))",
+        "forest-green": "hsl(var(--forest-green))",
+        coral: "hsl(var(--coral))",
+        cream: "hsl(var(--cream))",
+        "light-peach": "hsl(var(--light-peach))",
       },
       borderRadius: {
         lg: "var(--radius)",

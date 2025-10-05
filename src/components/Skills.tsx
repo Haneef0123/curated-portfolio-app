@@ -10,7 +10,7 @@ import { CORE_EXPERTISE } from "@/lib/constants/personal";
 
 export const Skills = () => {
   return (
-    <section id="skills" className="py-20 bg-background">
+    <section id="skills" className="py-12 md:py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Section badge */}
@@ -18,7 +18,7 @@ export const Skills = () => {
             <SectionBadge variant="accent">Technical Skills</SectionBadge>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
             My toolkit for
             <br />
             <span className="relative inline-block">
@@ -30,31 +30,33 @@ export const Skills = () => {
             </span>
           </h2>
 
-          <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
+          <p className="text-center text-sm md:text-base text-muted-foreground mb-12 md:mb-16 max-w-2xl mx-auto px-4">
             A comprehensive set of technologies and tools I use to bring ideas
             to life
           </p>
 
           {/* Skills Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {SKILLS.map((skill, index) => (
               <div
                 key={index}
-                className="group p-6 bg-card rounded-3xl border-2 border-border hover:border-current transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                className="group p-5 md:p-6 bg-card rounded-3xl border-2 border-border hover:border-current transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
               >
                 <div
-                  className={`inline-flex p-4 rounded-2xl ${skill.color} border-2 mb-4 group-hover:scale-110 transition-transform`}
+                  className={`inline-flex p-3 md:p-4 rounded-2xl ${skill.color} border-2 mb-3 md:mb-4 group-hover:scale-110 transition-transform`}
                 >
-                  <skill.icon className="h-6 w-6" />
+                  <skill.icon className="h-5 w-5 md:h-6 md:w-6" />
                 </div>
-                <h3 className="font-bold text-xl mb-4">{skill.title}</h3>
+                <h3 className="font-bold text-lg md:text-xl mb-3 md:mb-4">
+                  {skill.title}
+                </h3>
                 <ul className="space-y-2">
                   {skill.items.map((item, i) => (
                     <li
                       key={i}
-                      className="text-sm text-muted-foreground flex items-center"
+                      className="text-xs md:text-sm text-muted-foreground flex items-center"
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-current mr-2 opacity-50" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-current mr-2 flex-shrink-0 opacity-50" />
                       {item}
                     </li>
                   ))}
@@ -64,13 +66,15 @@ export const Skills = () => {
           </div>
 
           {/* Additional Skills */}
-          <div className="mt-12 p-8 bg-muted/50 rounded-3xl">
-            <h3 className="font-bold text-lg mb-4">Core Areas of Expertise</h3>
-            <div className="flex flex-wrap gap-3">
+          <div className="mt-8 md:mt-12 p-6 md:p-8 bg-muted/50 rounded-3xl">
+            <h3 className="font-bold text-base md:text-lg mb-3 md:mb-4">
+              Core Areas of Expertise
+            </h3>
+            <div className="flex flex-wrap gap-2 md:gap-3">
               {CORE_EXPERTISE.map((item, index) => (
                 <span
                   key={index}
-                  className="px-4 py-2 bg-background rounded-full text-sm font-medium border border-border"
+                  className="px-3 md:px-4 py-1.5 md:py-2 bg-background rounded-full text-xs md:text-sm font-medium border border-border"
                 >
                   {item}
                 </span>

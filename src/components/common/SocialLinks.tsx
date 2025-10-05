@@ -19,7 +19,7 @@ const iconMap: Record<string, LucideIcon> = {
 
 export const SocialLinks = ({ links, className = "" }: SocialLinksProps) => {
   return (
-    <div className={`flex gap-4 ${className}`}>
+    <div className={`flex gap-3 md:gap-4 ${className}`}>
       {links.map((link) => {
         const Icon = iconMap[link.icon];
         return (
@@ -28,10 +28,10 @@ export const SocialLinks = ({ links, className = "" }: SocialLinksProps) => {
             href={link.url}
             target={link.icon !== "mail" ? "_blank" : undefined}
             rel={link.icon !== "mail" ? "noopener noreferrer" : undefined}
-            className="p-3 rounded-full bg-card hover:bg-accent hover:text-accent-foreground transition-all duration-300 shadow-md hover:shadow-lg"
+            className="p-2.5 md:p-3 rounded-full bg-card hover:bg-accent hover:text-accent-foreground transition-all duration-300 shadow-md hover:shadow-lg"
             aria-label={link.name}
           >
-            <Icon className="h-5 w-5" />
+            <Icon className="h-4 w-4 md:h-5 md:w-5" />
           </a>
         );
       })}
