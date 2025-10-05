@@ -1,4 +1,5 @@
 import { Code2, Layout, Palette, Zap } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const skills = [
   {
@@ -28,10 +29,17 @@ const skills = [
 ];
 
 export const Skills = () => {
+  const { ref, isVisible } = useScrollAnimation();
+
   return (
     <section id="skills" className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
+        <div 
+          ref={ref}
+          className={`max-w-6xl mx-auto transition-all duration-700 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           {/* Section badge */}
           <div className="text-center mb-6">
             <div className="inline-block px-4 py-2 bg-coral/10 border border-coral/30 rounded-full">
@@ -69,7 +77,10 @@ export const Skills = () => {
             {skills.map((skill, index) => (
               <div
                 key={index}
-                className="group p-6 bg-card rounded-3xl border-2 border-border hover:border-current transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                className={`group p-6 bg-card rounded-3xl border-2 border-border hover:border-current transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className={`inline-flex p-4 rounded-2xl ${skill.color} border-2 mb-4 group-hover:scale-110 transition-transform`}>
                   <skill.icon className="h-6 w-6" />

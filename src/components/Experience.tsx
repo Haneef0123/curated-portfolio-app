@@ -1,4 +1,5 @@
 import { Briefcase, Calendar } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const experiences = [
   {
@@ -43,10 +44,17 @@ const experiences = [
 ];
 
 export const Experience = () => {
+  const { ref, isVisible } = useScrollAnimation();
+
   return (
     <section id="experience" className="py-20 bg-card">
       <div className="container mx-auto px-4">
-        <div className="max-w-5xl mx-auto">
+        <div 
+          ref={ref}
+          className={`max-w-5xl mx-auto transition-all duration-700 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           {/* Section badge */}
           <div className="text-center mb-6">
             <div className="inline-block px-4 py-2 bg-warm-brown/10 border border-warm-brown/30 rounded-full">
@@ -69,7 +77,10 @@ export const Experience = () => {
             {experiences.map((exp, index) => (
               <div
                 key={index}
-                className={`relative pl-8 border-l-4 ${exp.color} pb-8 last:pb-0`}
+                className={`relative pl-8 border-l-4 ${exp.color} pb-8 last:pb-0 transition-all duration-700 ${
+                  isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+                }`}
+                style={{ transitionDelay: `${index * 150}ms` }}
               >
                 {/* Timeline dot */}
                 <div className="absolute left-[-13px] top-0 w-6 h-6 rounded-full bg-background border-4 border-current" />
