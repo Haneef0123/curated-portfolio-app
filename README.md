@@ -1,73 +1,80 @@
-# Welcome to your Lovable project
+# Portfolio Website
 
-## Project info
+A modern, responsive portfolio website built with Next.js 14, showcasing professional experience, projects, and skills.
 
-**URL**: https://lovable.dev/projects/59bacdfa-5ec8-43e9-835f-ee3a8d87f26f
+## 🚀 Technologies Used
 
-## How can I edit this code?
+- **Next.js 14** - React framework with App Router
+- **TypeScript** - Type-safe development
+- **Tailwind CSS** - Utility-first styling
+- **Radix UI** - Accessible component primitives
+- **Lucide React** - Beautiful icons
+- **Framer Motion** - Smooth animations
 
-There are several ways of editing your application.
+## 🛠️ Getting Started
 
-**Use Lovable**
+### Prerequisites
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/59bacdfa-5ec8-43e9-835f-ee3a8d87f26f) and start prompting.
+- Node.js 18+ and npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+### Installation
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Clone the repository
+git clone https://github.com/Haneef0123/curated-portfolio-app.git
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Navigate to the project directory
+cd curated-portfolio-app
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The application will be available at `http://localhost:3000`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📦 Available Scripts
 
-**Use GitHub Codespaces**
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 📁 Project Structure
 
-## What technologies are used for this project?
+```
+src/
+├── app/                    # Next.js App Router
+├── components/             # React components
+│   ├── common/            # Reusable UI components
+│   ├── svg/               # SVG components
+│   └── ui/                # shadcn/ui components
+├── lib/                   # Utilities and constants
+│   ├── constants/         # Application constants
+│   └── utils/             # Helper functions
+├── hooks/                 # Custom React hooks
+└── types/                 # TypeScript type definitions
+```
 
-This project is built with:
+## 🎨 Features
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- **Responsive Design** - Mobile-first approach
+- **Dark Mode Support** - Comfortable viewing in any environment
+- **Smooth Animations** - Enhanced user experience
+- **SEO Optimized** - Better search engine visibility
+- **Type Safe** - Full TypeScript coverage
+- **Component-based Architecture** - Maintainable and scalable code
 
-## How can I deploy this project?
+## 📝 Customization
 
-Simply open [Lovable](https://lovable.dev/projects/59bacdfa-5ec8-43e9-835f-ee3a8d87f26f) and click on Share -> Publish.
+Update personal information, projects, and experience in:
+- `src/lib/constants/personal.ts`
+- `src/lib/constants/projects.ts`
+- `src/lib/constants/experience.ts`
+- `src/lib/constants/skills.ts`
 
-## Can I connect a custom domain to my Lovable project?
+## 📄 License
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+This project is open source and available under the MIT License.
