@@ -1,5 +1,14 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, Linkedin, ArrowRight } from "lucide-react";
+import { SectionBadge } from "@/components/common/SectionBadge";
+import {
+  DecorativeUnderline,
+  UnderlineVariants,
+} from "@/components/svg/DecorativeUnderline";
+import { PERSONAL_INFO, SOCIAL_LINKS } from "@/lib/constants/personal";
+import { scrollToTop } from "@/lib/utils/scroll";
 
 export const Contact = () => {
   return (
@@ -8,63 +17,57 @@ export const Contact = () => {
         <div className="max-w-4xl mx-auto">
           {/* Main content */}
           <div className="text-center mb-12">
-            <div className="inline-block mb-6 px-4 py-2 bg-forest-green/10 border border-forest-green/30 rounded-full">
-              <span className="text-sm font-semibold text-forest-green">Let's Connect</span>
-            </div>
+            <SectionBadge variant="secondary">Let's Connect</SectionBadge>
 
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
               Ready to start a
               <br />
               <span className="relative inline-block">
                 conversation
-                <svg 
-                  className="absolute -bottom-2 left-0 w-full" 
-                  viewBox="0 0 300 12" 
-                  fill="none" 
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path 
-                    d="M2 8C50 4 100 10 150 6C200 2 250 8 298 4" 
-                    stroke="hsl(var(--forest-green))" 
-                    strokeWidth="3" 
-                    strokeLinecap="round"
-                  />
-                </svg>
+                <DecorativeUnderline
+                  pathData={UnderlineVariants.curved}
+                  color="hsl(var(--forest-green))"
+                />
               </span>
               ?
             </h2>
 
             <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
-              I'm always open to discussing new opportunities, interesting projects, or potential collaborations.
+              I'm always open to discussing new opportunities, interesting
+              projects, or potential collaborations.
             </p>
           </div>
 
           {/* Contact cards */}
           <div className="grid md:grid-cols-3 gap-6 mb-12">
             <a
-              href="mailto:bashahaneef103@gmail.com"
+              href={`mailto:${PERSONAL_INFO.email}`}
               className="group p-6 bg-background rounded-2xl border-2 border-border hover:border-mustard hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
             >
               <div className="inline-flex p-3 rounded-xl bg-mustard/20 text-mustard border-2 border-mustard/30 mb-4 group-hover:scale-110 transition-transform">
                 <Mail className="h-6 w-6" />
               </div>
               <h3 className="font-bold mb-2">Email</h3>
-              <p className="text-sm text-muted-foreground break-all">bashahaneef103@gmail.com</p>
+              <p className="text-sm text-muted-foreground break-all">
+                {PERSONAL_INFO.email}
+              </p>
             </a>
 
             <a
-              href="tel:+917386353383"
+              href={`tel:${PERSONAL_INFO.phone}`}
               className="group p-6 bg-background rounded-2xl border-2 border-border hover:border-forest-green hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
             >
               <div className="inline-flex p-3 rounded-xl bg-forest-green/20 text-forest-green border-2 border-forest-green/30 mb-4 group-hover:scale-110 transition-transform">
                 <Phone className="h-6 w-6" />
               </div>
               <h3 className="font-bold mb-2">Phone</h3>
-              <p className="text-sm text-muted-foreground">+91 7386353383</p>
+              <p className="text-sm text-muted-foreground">
+                {PERSONAL_INFO.phone}
+              </p>
             </a>
 
             <a
-              href="https://linkedin.com/in/haneef-basha"
+              href={SOCIAL_LINKS.find((link) => link.icon === "linkedin")?.url}
               target="_blank"
               rel="noopener noreferrer"
               className="group p-6 bg-background rounded-2xl border-2 border-border hover:border-coral hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
@@ -73,18 +76,23 @@ export const Contact = () => {
                 <Linkedin className="h-6 w-6" />
               </div>
               <h3 className="font-bold mb-2">LinkedIn</h3>
-              <p className="text-sm text-muted-foreground">linkedin.com/in/haneef-basha</p>
+              <p className="text-sm text-muted-foreground">
+                linkedin.com/in/haneef-basha
+              </p>
             </a>
           </div>
 
           {/* CTA */}
           <div className="text-center p-8 bg-warm-brown rounded-3xl text-primary-foreground">
-            <h3 className="text-2xl font-bold mb-3">Let's Build Something Great Together</h3>
+            <h3 className="text-2xl font-bold mb-3">
+              Let's Build Something Great Together
+            </h3>
             <p className="mb-6 opacity-90">
-              Whether you need a skilled developer for your team or want to discuss a project, I'd love to hear from you.
+              Whether you need a skilled developer for your team or want to
+              discuss a project, I'd love to hear from you.
             </p>
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="bg-primary-foreground text-warm-brown hover:bg-primary-foreground/90 font-semibold rounded-full px-8 group"
               asChild
             >
@@ -100,7 +108,10 @@ export const Contact = () => {
       {/* Footer */}
       <footer className="container mx-auto px-4 mt-16 pt-8 border-t border-border">
         <div className="text-center text-sm text-muted-foreground">
-          <p>© 2025 Shaik Haneef Basha. Built with React, TypeScript, and Tailwind CSS.</p>
+          <p>
+            © 2025 Shaik Haneef Basha. Built with React, TypeScript, and
+            Tailwind CSS.
+          </p>
         </div>
       </footer>
     </section>
