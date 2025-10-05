@@ -1,7 +1,11 @@
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { useCountUp } from "@/hooks/use-count-up";
 
 export const About = () => {
   const { ref, isVisible } = useScrollAnimation();
+  const yearsCount = useCountUp(6, 2000, isVisible);
+  const companiesCount = useCountUp(3, 2000, isVisible);
+  const projectsCount = useCountUp(15, 2000, isVisible);
 
   return (
     <section id="about" className="py-20 bg-card">
@@ -49,15 +53,15 @@ export const About = () => {
           {/* Stats */}
           <div className="grid grid-cols-3 gap-6 mt-12 pt-12 border-t border-border">
             <div className="text-center">
-              <div className="text-4xl font-bold text-warm-brown mb-2">6+</div>
+              <div className="text-4xl font-bold text-warm-brown mb-2">{yearsCount}+</div>
               <div className="text-sm text-muted-foreground">Years Experience</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-forest-green mb-2">3</div>
+              <div className="text-4xl font-bold text-forest-green mb-2">{companiesCount}</div>
               <div className="text-sm text-muted-foreground">Major Companies</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-coral mb-2">15+</div>
+              <div className="text-4xl font-bold text-coral mb-2">{projectsCount}+</div>
               <div className="text-sm text-muted-foreground">Projects Delivered</div>
             </div>
           </div>
