@@ -1,3 +1,5 @@
+"use client";
+
 import { Briefcase, Calendar } from "lucide-react";
 
 const experiences = [
@@ -11,8 +13,8 @@ const experiences = [
       "Engineered a real-time gold rate tracking platform using React, Redux, and SSR; optimized data fetching and UI rendering to boost user engagement by 40%",
       "Revamped the IPO application platform using Next.js and TypeScript; implemented conditional form logic and user-centric validation workflows, resulting in a 70% increase in successful applications",
       "Developed interactive educational platforms (UpLearn, Webinars) with Tailwind CSS; leveraged Mixpanel event tracking to improve feature engagement and increase retention by 30%",
-      "Implemented Account Aggregator onboarding flows by integrating external APIs; led to a 50% reduction in drop-off rates"
-    ]
+      "Implemented Account Aggregator onboarding flows by integrating external APIs; led to a 50% reduction in drop-off rates",
+    ],
   },
   {
     company: "MSys Technologies",
@@ -24,8 +26,8 @@ const experiences = [
       "Engineered analytics and recovery modules using React and Ant Design, improving client data processing efficiency",
       "Constructed a real-time operational dashboard using Redux Saga and React Hooks; optimized data polling and UI state updates to enable instant data visibility",
       "Debugged and optimized UI components via Chrome DevTools and React Profiler; eliminated layout shifts and JavaScript errors, improving stability",
-      "Refactored asynchronous data logic using Redux Thunk and Mobx; minimized redundant network calls, resulting in a 30% reduction in API latency"
-    ]
+      "Refactored asynchronous data logic using Redux Thunk and Mobx; minimized redundant network calls, resulting in a 30% reduction in API latency",
+    ],
   },
   {
     company: "Tata Consultancy Services",
@@ -37,9 +39,9 @@ const experiences = [
       "Delivered dynamic airline web interfaces using React and RESTful API integration; implemented lazy loading and request throttling to streamline data flow",
       "Diagnosed and resolved layout and rendering issues using Chrome DevTools; reduced CLS (Cumulative Layout Shift) and improved page load performance by 15%",
       "Crafted responsive user interfaces using mobile-first CSS3 and modular SCSS; increased engagement on tablets and smartphones by 25%",
-      "Produced reusable marketing components within Agile 2-week sprints; collaborated with QA and content teams for timely campaign launches"
-    ]
-  }
+      "Produced reusable marketing components within Agile 2-week sprints; collaborated with QA and content teams for timely campaign launches",
+    ],
+  },
 ];
 
 export const Experience = () => {
@@ -50,7 +52,9 @@ export const Experience = () => {
           {/* Section badge */}
           <div className="text-center mb-6">
             <div className="inline-block px-4 py-2 bg-warm-brown/10 border border-warm-brown/30 rounded-full">
-              <span className="text-sm font-semibold text-warm-brown">Professional Journey</span>
+              <span className="text-sm font-semibold text-warm-brown">
+                Professional Journey
+              </span>
             </div>
           </div>
 
@@ -82,7 +86,9 @@ export const Experience = () => {
                         <Briefcase className="h-5 w-5 text-muted-foreground" />
                         <h3 className="font-bold text-2xl">{exp.company}</h3>
                       </div>
-                      <p className="text-lg font-semibold text-muted-foreground">{exp.role}</p>
+                      <p className="text-lg font-semibold text-muted-foreground">
+                        {exp.role}
+                      </p>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground bg-muted px-4 py-2 rounded-full">
                       <Calendar className="h-4 w-4" />
@@ -93,7 +99,10 @@ export const Experience = () => {
                   {/* Achievements */}
                   <ul className="space-y-3">
                     {exp.achievements.map((achievement, i) => (
-                      <li key={i} className="flex items-start text-muted-foreground">
+                      <li
+                        key={i}
+                        className="flex items-start text-muted-foreground"
+                      >
                         <span className="inline-block w-2 h-2 rounded-full bg-current mt-2 mr-3 flex-shrink-0 opacity-60" />
                         <span>{achievement}</span>
                       </li>
@@ -112,8 +121,12 @@ export const Experience = () => {
             </h3>
             <div className="flex flex-wrap justify-between items-start gap-4">
               <div>
-                <p className="font-semibold text-lg">B.Tech – Computer Science and Engineering</p>
-                <p className="text-muted-foreground">G. PullaReddy Engineering College, Kurnool</p>
+                <p className="font-semibold text-lg">
+                  B.Tech – Computer Science and Engineering
+                </p>
+                <p className="text-muted-foreground">
+                  G. PullaReddy Engineering College, Kurnool
+                </p>
               </div>
               <div className="text-muted-foreground bg-muted px-4 py-2 rounded-full text-sm">
                 Sept 2014 – May 2018
