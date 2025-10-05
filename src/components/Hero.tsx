@@ -18,21 +18,7 @@ export const Hero = () => {
 
       {/* Content */}
       <div className="container relative z-10 mx-auto px-4 py-20">
-        <div className="max-w-4xl flex flex-col md:flex-row items-center gap-8">
-          {/* Profile Image */}
-          <div className="flex-shrink-0">
-            <div className="relative w-48 h-48 md:w-56 md:h-56">
-              <img 
-                src={profileImg} 
-                alt="Shaik Haneef Basha - Front End Developer"
-                className="w-full h-full object-cover rounded-full border-4 border-mustard shadow-2xl"
-              />
-              <div className="absolute -bottom-2 -right-2 w-16 h-16 bg-coral rounded-full border-4 border-background flex items-center justify-center">
-                <span className="text-2xl">👋</span>
-              </div>
-            </div>
-          </div>
-
+        <div className="max-w-6xl flex flex-col md:flex-row items-center gap-8 md:gap-12">
           <div className="flex-1">
             {/* Badge */}
             <div className="inline-block mb-6 px-4 py-2 bg-mustard/20 border-2 border-mustard rounded-full">
@@ -114,6 +100,20 @@ export const Hero = () => {
               >
                 <Mail className="h-5 w-5" />
               </a>
+            </div>
+          </div>
+
+          {/* Profile Image */}
+          <div className="flex-shrink-0">
+            <div className="relative w-48 h-48 md:w-64 md:h-64">
+              <img 
+                src={profileImg} 
+                alt="Shaik Haneef Basha - Front End Developer"
+                className="w-full h-full object-cover rounded-full border-4 border-mustard shadow-2xl"
+              />
+              <div className="absolute -bottom-2 -right-2 w-16 h-16 bg-coral rounded-full border-4 border-background flex items-center justify-center">
+                <span className="text-2xl">👋</span>
+              </div>
             </div>
           </div>
         </div>
