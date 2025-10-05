@@ -46,7 +46,7 @@ const experiences = [
 
 export const Experience = () => {
   return (
-    <section id="experience" className="py-20 bg-card">
+    <section id="experience" className="py-12 md:py-20 bg-card">
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
           {/* Section badge */}
@@ -58,52 +58,54 @@ export const Experience = () => {
             </div>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
             Where I've
             <br />
             <span className="text-warm-brown">made an impact</span>
           </h2>
 
-          <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
+          <p className="text-center text-sm md:text-base text-muted-foreground mb-12 md:mb-16 max-w-2xl mx-auto px-4">
             A timeline of my professional growth and key contributions
           </p>
 
           {/* Timeline */}
-          <div className="space-y-8">
+          <div className="space-y-6 md:space-y-8">
             {experiences.map((exp, index) => (
               <div
                 key={index}
-                className={`relative pl-8 border-l-4 ${exp.color} pb-8 last:pb-0`}
+                className={`relative pl-6 md:pl-8 border-l-4 ${exp.color} pb-6 md:pb-8 last:pb-0`}
               >
                 {/* Timeline dot */}
-                <div className="absolute left-[-13px] top-0 w-6 h-6 rounded-full bg-background border-4 border-current" />
+                <div className="absolute left-[-11px] md:left-[-13px] top-0 w-5 h-5 md:w-6 md:h-6 rounded-full bg-background border-4 border-current" />
 
-                <div className="bg-background rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+                <div className="bg-background rounded-2xl p-4 md:p-6 shadow-sm hover:shadow-md transition-shadow">
                   {/* Header */}
-                  <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 md:gap-4 mb-3 md:mb-4">
                     <div>
                       <div className="flex items-center gap-2 mb-2">
-                        <Briefcase className="h-5 w-5 text-muted-foreground" />
-                        <h3 className="font-bold text-2xl">{exp.company}</h3>
+                        <Briefcase className="h-4 w-4 md:h-5 md:w-5 text-muted-foreground flex-shrink-0" />
+                        <h3 className="font-bold text-xl md:text-2xl">
+                          {exp.company}
+                        </h3>
                       </div>
-                      <p className="text-lg font-semibold text-muted-foreground">
+                      <p className="text-base md:text-lg font-semibold text-muted-foreground">
                         {exp.role}
                       </p>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground bg-muted px-4 py-2 rounded-full">
-                      <Calendar className="h-4 w-4" />
+                    <div className="flex items-center gap-2 text-xs md:text-sm text-muted-foreground bg-muted px-3 md:px-4 py-1.5 md:py-2 rounded-full whitespace-nowrap self-start">
+                      <Calendar className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
                       {exp.period}
                     </div>
                   </div>
 
                   {/* Achievements */}
-                  <ul className="space-y-3">
+                  <ul className="space-y-2 md:space-y-3">
                     {exp.achievements.map((achievement, i) => (
                       <li
                         key={i}
-                        className="flex items-start text-muted-foreground"
+                        className="flex items-start text-sm md:text-base text-muted-foreground"
                       >
-                        <span className="inline-block w-2 h-2 rounded-full bg-current mt-2 mr-3 flex-shrink-0 opacity-60" />
+                        <span className="inline-block w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-current mt-1.5 md:mt-2 mr-2 md:mr-3 flex-shrink-0 opacity-60" />
                         <span>{achievement}</span>
                       </li>
                     ))}
@@ -114,21 +116,21 @@ export const Experience = () => {
           </div>
 
           {/* Education */}
-          <div className="mt-16 p-8 bg-background rounded-2xl border-2 border-border">
-            <h3 className="font-bold text-2xl mb-4 flex items-center gap-2">
-              <span className="text-3xl">🎓</span>
+          <div className="mt-12 md:mt-16 p-6 md:p-8 bg-background rounded-2xl border-2 border-border">
+            <h3 className="font-bold text-xl md:text-2xl mb-3 md:mb-4 flex items-center gap-2">
+              <span className="text-2xl md:text-3xl">🎓</span>
               Education
             </h3>
-            <div className="flex flex-wrap justify-between items-start gap-4">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 md:gap-4">
               <div>
-                <p className="font-semibold text-lg">
+                <p className="font-semibold text-base md:text-lg">
                   B.Tech – Computer Science and Engineering
                 </p>
-                <p className="text-muted-foreground">
+                <p className="text-sm md:text-base text-muted-foreground">
                   G. PullaReddy Engineering College, Kurnool
                 </p>
               </div>
-              <div className="text-muted-foreground bg-muted px-4 py-2 rounded-full text-sm">
+              <div className="text-muted-foreground bg-muted px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm whitespace-nowrap self-start">
                 Sept 2014 – May 2018
               </div>
             </div>
