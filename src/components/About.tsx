@@ -10,12 +10,7 @@ export const About = () => {
   return (
     <section id="about" className="py-20 bg-card">
       <div className="container mx-auto px-4">
-        <div 
-          ref={ref}
-          className={`max-w-4xl mx-auto transition-all duration-700 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
+        <div className="max-w-4xl mx-auto">
           {/* Section badge */}
           <div className="inline-block mb-6 px-4 py-2 bg-forest-green/10 border border-forest-green/30 rounded-full">
             <span className="text-sm font-semibold text-forest-green">About Me</span>
@@ -51,17 +46,17 @@ export const About = () => {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-6 mt-12 pt-12 border-t border-border">
+          <div ref={ref} className="grid grid-cols-3 gap-6 mt-12 pt-12 border-t border-border">
             <div className="text-center">
-              <div className="text-4xl font-bold text-warm-brown mb-2">{yearsCount}+</div>
+              <div className="text-4xl font-bold text-warm-brown mb-2 tabular-nums">{yearsCount}+</div>
               <div className="text-sm text-muted-foreground">Years Experience</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-forest-green mb-2">{companiesCount}</div>
+              <div className="text-4xl font-bold text-forest-green mb-2 tabular-nums">{companiesCount}</div>
               <div className="text-sm text-muted-foreground">Major Companies</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-coral mb-2">{projectsCount}+</div>
+              <div className="text-4xl font-bold text-coral mb-2 tabular-nums">{projectsCount}+</div>
               <div className="text-sm text-muted-foreground">Projects Delivered</div>
             </div>
           </div>

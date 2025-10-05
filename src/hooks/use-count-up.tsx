@@ -1,36 +1,42 @@
 import { useEffect, useRef, useState } from "react";
 
-export const useCountUp = (end: number, duration: number = 2000, isVisible: boolean) => {
+export const useCountUp = (end: number, duration: number = 2500, isVisible: boolean) => {
   const [count, setCount] = useState(0);
-  const countRef = useRef(0);
-  const startTimeRef = useRef<number | null>(null);
+  const hasAnimatedRef = useRef(false);
 
   useEffect(() => {
-    if (!isVisible) return;
+    if (!isVisible || hasAnimatedRef.current) return;
+    
+    hasAnimatedRef.current = true;
+    let startTime: number | null = null;
+    let animationFrame: number;
 
     const animate = (timestamp: number) => {
-      if (!startTimeRef.current) {
-        startTimeRef.current = timestamp;
-      }
-
-      const progress = timestamp - startTimeRef.current;
+      if (!startTime) startTime = timestamp;
+      
+      const progress = timestamp - startTime;
       const percentage = Math.min(progress / duration, 1);
       
-      // Easing function for smooth animation
-      const easeOutQuart = 1 - Math.pow(1 - percentage, 4);
-      const currentCount = Math.floor(easeOutQuart * end);
+      // Smoother easing function (ease-out-expo)
+      const easeOutExpo = percentage === 1 ? 1 : 1 - Math.pow(2, -10 * percentage);
+      const currentCount = Math.floor(easeOutExpo * end);
 
-      countRef.current = currentCount;
       setCount(currentCount);
 
       if (percentage < 1) {
-        requestAnimationFrame(animate);
+        animationFrame = requestAnimationFrame(animate);
       } else {
         setCount(end);
       }
     };
 
-    requestAnimationFrame(animate);
+    animationFrame = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+      }
+    };
   }, [end, duration, isVisible]);
 
   return count;

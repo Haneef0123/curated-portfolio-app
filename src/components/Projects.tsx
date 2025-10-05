@@ -1,6 +1,5 @@
 import { ArrowUpRight, TrendingUp, Users, Zap } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const projects = [
   {
@@ -38,17 +37,10 @@ const projects = [
 ];
 
 export const Projects = () => {
-  const { ref, isVisible } = useScrollAnimation();
-
   return (
     <section id="projects" className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <div 
-          ref={ref}
-          className={`max-w-6xl mx-auto transition-all duration-700 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
+        <div className="max-w-6xl mx-auto">
           {/* Section badge */}
           <div className="text-center mb-6">
             <div className="inline-block px-4 py-2 bg-mustard/10 border border-mustard/30 rounded-full">
@@ -86,10 +78,7 @@ export const Projects = () => {
             {projects.map((project, index) => (
               <Card
                 key={index}
-                className={`group p-6 hover:shadow-lg transition-all duration-500 hover:-translate-y-1 border-2 border-border hover:border-current cursor-pointer ${
-                  isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-                }`}
-                style={{ transitionDelay: `${index * 100}ms` }}
+                className="group p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-2 border-border hover:border-current cursor-pointer"
               >
                 <div className={`inline-flex p-3 rounded-xl ${project.color} mb-4 group-hover:scale-110 transition-transform`}>
                   <project.icon className="h-6 w-6" />
