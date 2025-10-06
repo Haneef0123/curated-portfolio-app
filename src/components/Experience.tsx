@@ -1,50 +1,12 @@
 "use client";
 
+import { EDUCATION, EXPERIENCES } from "@/lib/constants";
 import { Briefcase, Calendar } from "lucide-react";
-
-const experiences = [
-  {
-    company: "Upstox",
-    role: "Front End Developer",
-    period: "Jan 2023 – Present",
-    location: "India",
-    color: "border-l-mustard",
-    achievements: [
-      "Engineered a real-time gold rate tracking platform using React, Redux, and SSR; optimized data fetching and UI rendering to boost user engagement by 40%",
-      "Revamped the IPO application platform using Next.js and TypeScript; implemented conditional form logic and user-centric validation workflows, resulting in a 70% increase in successful applications",
-      "Developed interactive educational platforms (UpLearn, Webinars) with Tailwind CSS; leveraged Mixpanel event tracking to improve feature engagement and increase retention by 30%",
-      "Implemented Account Aggregator onboarding flows by integrating external APIs; led to a 50% reduction in drop-off rates",
-    ],
-  },
-  {
-    company: "MSys Technologies",
-    role: "Front End Developer",
-    period: "Jul 2021 – Jan 2023",
-    location: "India",
-    color: "border-l-forest-green",
-    achievements: [
-      "Engineered analytics and recovery modules using React and Ant Design, improving client data processing efficiency",
-      "Constructed a real-time operational dashboard using Redux Saga and React Hooks; optimized data polling and UI state updates to enable instant data visibility",
-      "Debugged and optimized UI components via Chrome DevTools and React Profiler; eliminated layout shifts and JavaScript errors, improving stability",
-      "Refactored asynchronous data logic using Redux Thunk and Mobx; minimized redundant network calls, resulting in a 30% reduction in API latency",
-    ],
-  },
-  {
-    company: "Tata Consultancy Services",
-    role: "Front End Developer",
-    period: "Oct 2018 – Jun 2021",
-    location: "India",
-    color: "border-l-coral",
-    achievements: [
-      "Delivered dynamic airline web interfaces using React and RESTful API integration; implemented lazy loading and request throttling to streamline data flow",
-      "Diagnosed and resolved layout and rendering issues using Chrome DevTools; reduced CLS (Cumulative Layout Shift) and improved page load performance by 15%",
-      "Crafted responsive user interfaces using mobile-first CSS3 and modular SCSS; increased engagement on tablets and smartphones by 25%",
-      "Produced reusable marketing components within Agile 2-week sprints; collaborated with QA and content teams for timely campaign launches",
-    ],
-  },
-];
+import { useDesktopScrollAnimation } from "@/hooks/use-desktop-scroll-animation";
 
 export const Experience = () => {
+  const { ref, isVisible } = useDesktopScrollAnimation(0.1);
+
   return (
     <section id="experience" className="py-12 md:py-20 bg-card">
       <div className="container mx-auto px-4">
@@ -69,14 +31,25 @@ export const Experience = () => {
           </p>
 
           {/* Timeline */}
-          <div className="space-y-6 md:space-y-8">
-            {experiences.map((exp, index) => (
+          <div ref={ref} className="space-y-6 md:space-y-8">
+            {EXPERIENCES.map((exp, index) => (
               <div
                 key={index}
-                className={`relative pl-6 md:pl-8 border-l-4 ${exp.color} pb-6 md:pb-8 last:pb-0`}
+                className={`relative md:pl-8 md:border-l-4 ${
+                  exp.color
+                } md:pb-8 ${
+                  index !== EXPERIENCES.length - 1 ? "pb-6 md:pb-0" : ""
+                } md:last:pb-0 transition-all duration-600 ${
+                  isVisible
+                    ? "opacity-100 translate-y-0"
+                    : "md:opacity-0 md:translate-y-8"
+                }`}
+                style={{
+                  transitionDelay: isVisible ? `${index * 100}ms` : "0ms",
+                }}
               >
-                {/* Timeline dot */}
-                <div className="absolute left-[-11px] md:left-[-13px] top-0 w-5 h-5 md:w-6 md:h-6 rounded-full bg-background border-4 border-current" />
+                {/* Timeline dot - hidden on mobile */}
+                <div className="hidden md:block absolute left-[-13px] top-0 w-6 h-6 rounded-full bg-background border-4 border-current" />
 
                 <div className="bg-background rounded-2xl p-4 md:p-6 shadow-sm hover:shadow-md transition-shadow">
                   {/* Header */}
@@ -124,14 +97,14 @@ export const Experience = () => {
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 md:gap-4">
               <div>
                 <p className="font-semibold text-base md:text-lg">
-                  B.Tech – Computer Science and Engineering
+                  {EDUCATION.degree}
                 </p>
                 <p className="text-sm md:text-base text-muted-foreground">
-                  G. PullaReddy Engineering College, Kurnool
+                  {EDUCATION.institution}
                 </p>
               </div>
               <div className="text-muted-foreground bg-muted px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm whitespace-nowrap self-start">
-                Sept 2014 – May 2018
+                {EDUCATION.period}
               </div>
             </div>
           </div>

@@ -9,8 +9,12 @@ import {
 } from "@/components/svg/DecorativeUnderline";
 import { PERSONAL_INFO, SOCIAL_LINKS } from "@/lib/constants/personal";
 import { scrollToTop } from "@/lib/utils/scroll";
+import { useDesktopScrollAnimation } from "@/hooks/use-desktop-scroll-animation";
 
 export const Contact = () => {
+  const { ref, isVisible } = useDesktopScrollAnimation(0.1);
+  const { ref: ctaRef, isVisible: ctaVisible } = useDesktopScrollAnimation(0.2);
+
   return (
     <section id="contact" className="py-12 md:py-20 bg-card">
       <div className="container mx-auto px-4">
@@ -39,10 +43,18 @@ export const Contact = () => {
           </div>
 
           {/* Contact cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-12">
+          <div
+            ref={ref}
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-12"
+          >
             <a
               href={`mailto:${PERSONAL_INFO.email}`}
-              className="group p-5 md:p-6 bg-background rounded-2xl border-2 border-border hover:border-mustard hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              className={`group p-5 md:p-6 bg-background rounded-2xl border-2 border-border hover:border-mustard hover:shadow-lg transition-all duration-500 hover:-translate-y-1 ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "md:opacity-0 md:translate-y-8"
+              }`}
+              style={{ transitionDelay: isVisible ? "0ms" : "0ms" }}
             >
               <div className="inline-flex p-2.5 md:p-3 rounded-xl bg-mustard/20 text-mustard border-2 border-mustard/30 mb-3 md:mb-4 group-hover:scale-110 transition-transform">
                 <Mail className="h-5 w-5 md:h-6 md:w-6" />
@@ -55,7 +67,12 @@ export const Contact = () => {
 
             <a
               href={`tel:${PERSONAL_INFO.phone}`}
-              className="group p-5 md:p-6 bg-background rounded-2xl border-2 border-border hover:border-forest-green hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              className={`group p-5 md:p-6 bg-background rounded-2xl border-2 border-border hover:border-forest-green hover:shadow-lg transition-all duration-500 hover:-translate-y-1 ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "md:opacity-0 md:translate-y-8"
+              }`}
+              style={{ transitionDelay: isVisible ? "100ms" : "0ms" }}
             >
               <div className="inline-flex p-2.5 md:p-3 rounded-xl bg-forest-green/20 text-forest-green border-2 border-forest-green/30 mb-3 md:mb-4 group-hover:scale-110 transition-transform">
                 <Phone className="h-5 w-5 md:h-6 md:w-6" />
@@ -70,7 +87,12 @@ export const Contact = () => {
               href={SOCIAL_LINKS.find((link) => link.icon === "linkedin")?.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group p-5 md:p-6 bg-background rounded-2xl border-2 border-border hover:border-coral hover:shadow-lg transition-all duration-300 hover:-translate-y-1 sm:col-span-2 md:col-span-1"
+              className={`group p-5 md:p-6 bg-background rounded-2xl border-2 border-border hover:border-coral hover:shadow-lg transition-all duration-500 hover:-translate-y-1 sm:col-span-2 md:col-span-1 ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "md:opacity-0 md:translate-y-8"
+              }`}
+              style={{ transitionDelay: isVisible ? "200ms" : "0ms" }}
             >
               <div className="inline-flex p-2.5 md:p-3 rounded-xl bg-coral/20 text-coral border-2 border-coral/30 mb-3 md:mb-4 group-hover:scale-110 transition-transform">
                 <Linkedin className="h-5 w-5 md:h-6 md:w-6" />
@@ -83,7 +105,14 @@ export const Contact = () => {
           </div>
 
           {/* CTA */}
-          <div className="text-center p-6 md:p-8 bg-warm-brown rounded-3xl text-primary-foreground">
+          <div
+            ref={ctaRef}
+            className={`text-center p-6 md:p-8 bg-warm-brown rounded-3xl text-primary-foreground transition-all duration-700 ${
+              ctaVisible
+                ? "opacity-100 translate-y-0"
+                : "md:opacity-0 md:translate-y-6"
+            }`}
+          >
             <h3 className="text-xl md:text-2xl font-bold mb-2 md:mb-3">
               Let's Build Something Great Together
             </h3>
