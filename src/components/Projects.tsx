@@ -8,8 +8,13 @@ import {
   UnderlineVariants,
 } from "@/components/svg/DecorativeUnderline";
 import { PROJECTS, OTHER_ACHIEVEMENTS } from "@/lib/constants/projects";
+import { useDesktopScrollAnimation } from "@/hooks/use-desktop-scroll-animation";
 
 export const Projects = () => {
+  const { ref, isVisible } = useDesktopScrollAnimation(0.1);
+  const { ref: achievementsRef, isVisible: achievementsVisible } =
+    useDesktopScrollAnimation(0.2);
+
   return (
     <section id="projects" className="py-12 md:py-20 bg-background">
       <div className="container mx-auto px-4">
@@ -37,11 +42,21 @@ export const Projects = () => {
           </p>
 
           {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+          <div
+            ref={ref}
+            className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6"
+          >
             {PROJECTS.map((project, index) => (
               <Card
                 key={index}
-                className="group p-5 md:p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-2 border-border hover:border-current cursor-pointer"
+                className={`group p-5 md:p-6 hover:shadow-lg transition-all duration-500 hover:-translate-y-1 border-2 border-border hover:border-current cursor-pointer ${
+                  isVisible
+                    ? "opacity-100 translate-y-0"
+                    : "md:opacity-0 md:translate-y-8"
+                }`}
+                style={{
+                  transitionDelay: isVisible ? `${index * 100}ms` : "0ms",
+                }}
               >
                 <div
                   className={`inline-flex p-2.5 md:p-3 rounded-xl ${project.color} mb-3 md:mb-4 group-hover:scale-110 transition-transform`}
@@ -72,7 +87,14 @@ export const Projects = () => {
           </div>
 
           {/* Additional highlights */}
-          <div className="mt-8 md:mt-12 p-6 md:p-8 bg-muted/50 rounded-3xl">
+          <div
+            ref={achievementsRef}
+            className={`mt-8 md:mt-12 p-6 md:p-8 bg-muted/50 rounded-3xl transition-all duration-700 ${
+              achievementsVisible
+                ? "opacity-100 translate-y-0"
+                : "md:opacity-0 md:translate-y-6"
+            }`}
+          >
             <h3 className="font-bold text-base md:text-lg mb-3 md:mb-4">
               Other Notable Achievements
             </h3>

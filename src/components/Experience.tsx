@@ -2,8 +2,11 @@
 
 import { EDUCATION, EXPERIENCES } from "@/lib/constants";
 import { Briefcase, Calendar } from "lucide-react";
+import { useDesktopScrollAnimation } from "@/hooks/use-desktop-scroll-animation";
 
 export const Experience = () => {
+  const { ref, isVisible } = useDesktopScrollAnimation(0.1);
+
   return (
     <section id="experience" className="py-12 md:py-20 bg-card">
       <div className="container mx-auto px-4">
@@ -28,7 +31,7 @@ export const Experience = () => {
           </p>
 
           {/* Timeline */}
-          <div className="space-y-6 md:space-y-8">
+          <div ref={ref} className="space-y-6 md:space-y-8">
             {EXPERIENCES.map((exp, index) => (
               <div
                 key={index}
@@ -36,7 +39,14 @@ export const Experience = () => {
                   exp.color
                 } md:pb-8 ${
                   index !== EXPERIENCES.length - 1 ? "pb-6 md:pb-0" : ""
-                } md:last:pb-0`}
+                } md:last:pb-0 transition-all duration-600 ${
+                  isVisible
+                    ? "opacity-100 translate-y-0"
+                    : "md:opacity-0 md:translate-y-8"
+                }`}
+                style={{
+                  transitionDelay: isVisible ? `${index * 100}ms` : "0ms",
+                }}
               >
                 {/* Timeline dot - hidden on mobile */}
                 <div className="hidden md:block absolute left-[-13px] top-0 w-6 h-6 rounded-full bg-background border-4 border-current" />

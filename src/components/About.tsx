@@ -7,6 +7,8 @@ import { ABOUT_STATS } from "@/lib/constants/personal";
 
 export const About = () => {
   const { ref, isVisible } = useScrollAnimation();
+  const { ref: contentRef, isVisible: contentVisible } =
+    useScrollAnimation(0.1);
   const stats = [
     useCountUp(ABOUT_STATS[0].value, 2000, isVisible),
     useCountUp(ABOUT_STATS[1].value, 2000, isVisible),
@@ -26,7 +28,14 @@ export const About = () => {
             <span className="text-forest-green">pixel-perfect reality</span>
           </h2>
 
-          <div className="space-y-3 md:space-y-6 text-sm md:text-lg text-muted-foreground leading-relaxed">
+          <div
+            ref={contentRef}
+            className={`space-y-3 md:space-y-6 text-sm md:text-lg text-muted-foreground leading-relaxed transition-all duration-700 ${
+              contentVisible
+                ? "opacity-100 translate-y-0"
+                : "md:opacity-0 md:translate-y-6"
+            }`}
+          >
             <p>
               I'm a{" "}
               <span className="font-semibold text-foreground">
