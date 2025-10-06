@@ -16,7 +16,7 @@ export const Projects = () => {
         <div className="max-w-6xl mx-auto">
           {/* Section badge */}
           <div className="text-center mb-6">
-            <SectionBadge variant="muted">Featured Work</SectionBadge>
+            <SectionBadge variant="accent">Featured Work</SectionBadge>
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">

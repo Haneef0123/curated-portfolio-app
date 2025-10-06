@@ -7,8 +7,11 @@ import {
   UnderlineVariants,
 } from "@/components/svg/DecorativeUnderline";
 import { CORE_EXPERTISE } from "@/lib/constants/personal";
+import { useDesktopScrollAnimation } from "@/hooks/use-desktop-scroll-animation";
 
 export const Skills = () => {
+  const { ref, isVisible } = useDesktopScrollAnimation(0.1);
+
   return (
     <section id="skills" className="py-12 md:py-20 bg-background">
       <div className="container mx-auto px-4">
@@ -36,11 +39,22 @@ export const Skills = () => {
           </p>
 
           {/* Skills Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          <div
+            ref={ref}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6"
+          >
             {SKILLS.map((skill, index) => (
               <div
                 key={index}
-                className="group p-5 md:p-6 bg-card rounded-3xl border-2 border-border hover:border-current transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                className={`group p-5 md:p-6 bg-card rounded-3xl border-2 border-border hover:border-current transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
+                  isVisible
+                    ? "opacity-100 translate-y-0"
+                    : "md:opacity-0 md:translate-y-8"
+                }`}
+                style={{
+                  transitionDelay: isVisible ? `${index * 100}ms` : "0ms",
+                  transitionDuration: "600ms",
+                }}
               >
                 <div
                   className={`inline-flex p-3 md:p-4 rounded-2xl ${skill.color} border-2 mb-3 md:mb-4 group-hover:scale-110 transition-transform`}
