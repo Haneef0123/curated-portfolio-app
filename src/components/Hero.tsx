@@ -15,7 +15,7 @@ export const Hero = () => {
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Content */}
       <div className="container relative z-10 mx-auto px-4 py-12 md:py-20">
-        <div className="max-w-6xl flex flex-col md:flex-row items-center gap-8 md:gap-12">
+        <div className="max-w-6xl flex flex-col md:flex-row items-center gap-12">
           <div className="flex-1 order-2 md:order-1">
             {/* Badge */}
             <div className="inline-block mb-4 md:mb-6 px-3 md:px-4 py-1.5 md:py-2 bg-mustard/20 border-2 border-mustard rounded-full">
