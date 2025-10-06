@@ -26,14 +26,12 @@ export const useCountUp = (
       // Smoother easing function (ease-out-expo)
       const easeOutExpo =
         percentage === 1 ? 1 : 1 - Math.pow(2, -10 * percentage);
-      const currentCount = Math.floor(easeOutExpo * end);
+      const currentCount = Math.round(easeOutExpo * end);
 
       setCount(currentCount);
 
       if (percentage < 1) {
         animationFrame = requestAnimationFrame(animate);
-      } else {
-        setCount(end);
       }
     };
 

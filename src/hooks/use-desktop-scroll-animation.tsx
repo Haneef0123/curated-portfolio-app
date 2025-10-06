@@ -2,48 +2,60 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export const useDesktopScrollAnimation = (threshold = 0.1) => {
+export const useDesktopScrollAnimation = (threshold = 0.2) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const hasTriggeredRef = useRef(false);
 
   useEffect(() => {
-    // Check if we're on desktop (md breakpoint = 768px)
-    const checkDesktop = () => {
-      setIsDesktop(window.innerWidth >= 768);
+    // Use matchMedia for better performance than resize listener
+    const mediaQuery = window.matchMedia("(min-width: 768px)");
+
+    const handleMediaChange = (e: MediaQueryListEvent | MediaQueryList) => {
+      setIsDesktop(e.matches);
     };
 
     // Initial check
-    checkDesktop();
+    handleMediaChange(mediaQuery);
 
-    // Listen for resize events
-    window.addEventListener("resize", checkDesktop);
+    // Listen for changes (modern approach)
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener("change", handleMediaChange);
+    } else {
+      // Fallback for older browsers
+      mediaQuery.addListener(handleMediaChange);
+    }
 
     return () => {
-      window.removeEventListener("resize", checkDesktop);
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener("change", handleMediaChange);
+      } else {
+        mediaQuery.removeListener(handleMediaChange);
+      }
     };
   }, []);
 
   useEffect(() => {
-    // Set up observer on both mobile and desktop
-    // Animation will only show on desktop via CSS classes
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        // Only trigger once when element becomes visible
+        if (entry.isIntersecting && !hasTriggeredRef.current) {
+          hasTriggeredRef.current = true;
           setIsVisible(true);
-          observer.unobserve(entry.target);
         }
       },
       { threshold }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    const currentRef = ref.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, [threshold]);
