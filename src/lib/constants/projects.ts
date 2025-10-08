@@ -11,7 +11,7 @@ export interface ProjectData {
 
 export const PROJECTS: ProjectData[] = [
   {
-    title: "Real-Time Gold Rate Tracker",
+    title: "Real-World Gold Rate Tracker",
     company: "Upstox",
     description:
       "Engineered a real-time gold rate tracking platform with React, Redux, and Server-Side Rendering. Optimized data fetching and UI rendering for seamless user experience.",
@@ -29,7 +29,7 @@ export const PROJECTS: ProjectData[] = [
     color: "bg-forest-green/20 text-forest-green",
   },
   {
-    title: "Educational Platforms (UpLearn, Webinars)",
+    title: "Educational Platforms (UpLEarn, Webinars)",
     company: "Upstox",
     description:
       "Developed interactive educational platforms with Tailwind CSS, leveraging Mixpanel event tracking and user segmentation for better engagement.",
