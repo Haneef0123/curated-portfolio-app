@@ -17,7 +17,7 @@ export const PROJECTS: ProjectData[] = [
       "Engineered a real-time gold rate tracking platform with React, Redux, and Server-Side Rendering. Optimized data fetching and UI rendering for seamless user experience.",
     impact: "40% increase in user engagement",
     icon: TrendingUp,
-    color: "bg-mustard/20 text-mustard",
+    color: "bg-mustard text-foreground",
   },
   {
     title: "IPO Application Platform",
