@@ -17,10 +17,13 @@ export const Skills = () => {
           A focused set of technologies and tools I use to bring ideas to life.
         </p>
 
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Two-up rather than four across: the categories hold 4, 4, 5 and 7
+            items, so four equal boxes would leave a block of dead space in the
+            short ones. Paired, the rows miss by a single item at most. */}
+        <div className="mt-14 grid gap-4 lg:grid-cols-2">
           {SKILLS.map((skill) => (
-            <article key={skill.title} className="surface h-full p-6">
-              <h3 className="type-title-sm flex items-start gap-2.5 text-foreground lg:min-h-[2.32em]">
+            <article key={skill.title} className="surface p-6 md:p-7">
+              <h3 className="type-title-sm flex items-start gap-2.5 text-foreground">
                 <span
                   aria-hidden="true"
                   className={cn(
@@ -31,7 +34,7 @@ export const Skills = () => {
                 {skill.title}
               </h3>
 
-              <ul className="mt-6 space-y-3">
+              <ul className="mt-5 grid gap-x-6 gap-y-3 sm:grid-cols-2">
                 {skill.items.map((item) => (
                   <li key={item.name} className="flex items-center gap-3">
                     <span
