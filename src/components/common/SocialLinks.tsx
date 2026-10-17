@@ -1,4 +1,4 @@
-import { Github, Mail, type LucideIcon } from "lucide-react";
+import { Github, Mail } from "lucide-react";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { cn } from "@/lib/utils";
 import type { IconComponent } from "@/types";

@@ -36,9 +36,9 @@ export const EDUCATION: Education = {
 };
 
 export const ABOUT_STATS = [
-  { value: 8, label: "Years Experience", color: "text-warm-brown" },
-  { value: 3, label: "Major Companies", color: "text-forest-green" },
-  { value: 15, label: "Projects Delivered", color: "text-coral" },
+  { value: 8, label: "Years Experience" },
+  { value: 3, label: "Major Companies" },
+  { value: 15, label: "Projects Delivered" },
 ] as const;
 
 export const CORE_EXPERTISE = [
