@@ -18,7 +18,6 @@
     --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text",
       "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial,
       "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-    --font-serif: "New York", ui-serif, Georgia, "Times New Roman", serif;
 
     /* Surfaces */
     --background: 0 0% 100%;
@@ -26,9 +25,6 @@
 
     --card: 0 0% 100%;
     --card-foreground: 240 3% 12%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 3% 12%;
 
     /* Interactive */
     --primary: 211 100% 45%;
@@ -43,28 +39,18 @@
     --accent: 160 84% 32%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 8 88% 52%;
-    --destructive-foreground: 0 0% 100%;
-
     --border: 240 6% 88%;
-    --input: 240 6% 88%;
     --ring: 211 100% 45%;
 
     --radius: 1.125rem;
 
     /* Brand accents — used sparingly, never as large fills */
-    --warm-brown: 240 3% 12%;
     --mustard: 40 92% 50%;
     --forest-green: 160 84% 32%;
     --coral: 8 88% 55%;
-    --cream: 240 7% 96%;
-    --light-peach: 240 7% 96%;
     --plum: 265 60% 55%;
 
     /* Elevation — soft, multi-layer, low-opacity */
-    --shadow-xs: 0 1px 2px hsl(240 3% 12% / 0.06);
-    --shadow-sm: 0 1px 3px hsl(240 3% 12% / 0.05),
-      0 6px 16px hsl(240 3% 12% / 0.06);
     --shadow-md: 0 2px 6px hsl(240 3% 12% / 0.06),
       0 14px 40px hsl(240 3% 12% / 0.12);
     --shadow-lg: 0 4px 12px hsl(240 3% 12% / 0.08),
@@ -76,62 +62,15 @@
     --ease-apple: cubic-bezier(0.28, 0.11, 0.32, 1);
   }
 
-  /* Explicit dark theme (opt-in via `.dark`) */
-  .dark {
-    --background: 0 0% 0%;
-    --foreground: 240 6% 96%;
-
-    --card: 240 2% 11%;
-    --card-foreground: 240 6% 96%;
-
-    --popover: 240 2% 11%;
-    --popover-foreground: 240 6% 96%;
-
-    --primary: 211 100% 52%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 240 2% 14%;
-    --secondary-foreground: 240 6% 96%;
-
-    --muted: 240 2% 14%;
-    --muted-foreground: 240 5% 66%;
-
-    --accent: 160 60% 45%;
-    --accent-foreground: 0 0% 0%;
-
-    --destructive: 8 80% 58%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 240 3% 20%;
-    --input: 240 3% 20%;
-    --ring: 211 100% 52%;
-
-    --warm-brown: 240 6% 96%;
-    --mustard: 40 92% 55%;
-    --forest-green: 160 60% 45%;
-    --coral: 8 80% 62%;
-    --cream: 240 2% 11%;
-    --light-peach: 240 2% 11%;
-    --plum: 265 70% 70%;
-
-    --shadow-xs: 0 1px 2px hsl(0 0% 0% / 0.5);
-    --shadow-sm: 0 1px 3px hsl(0 0% 0% / 0.4), 0 6px 16px hsl(0 0% 0% / 0.5);
-    --shadow-md: 0 2px 6px hsl(0 0% 0% / 0.5), 0 14px 40px hsl(0 0% 0% / 0.6);
-    --shadow-lg: 0 4px 12px hsl(0 0% 0% / 0.5), 0 28px 80px hsl(0 0% 0% / 0.7);
-  }
-
   /* Follow the system preference by default (Apple does not ship a toggle;
      the interface adapts). `.light` lets a consumer force light. */
   @media (prefers-color-scheme: dark) {
-    :root:not(.light):not(.dark) {
+    :root:not(.light) {
       --background: 0 0% 0%;
       --foreground: 240 6% 96%;
 
       --card: 240 2% 11%;
       --card-foreground: 240 6% 96%;
-
-      --popover: 240 2% 11%;
-      --popover-foreground: 240 6% 96%;
 
       --primary: 211 100% 52%;
       --primary-foreground: 0 0% 100%;
@@ -145,23 +84,14 @@
       --accent: 160 60% 45%;
       --accent-foreground: 0 0% 0%;
 
-      --destructive: 8 80% 58%;
-      --destructive-foreground: 0 0% 100%;
-
       --border: 240 3% 20%;
-      --input: 240 3% 20%;
       --ring: 211 100% 52%;
 
-      --warm-brown: 240 6% 96%;
       --mustard: 40 92% 55%;
       --forest-green: 160 60% 45%;
       --coral: 8 80% 62%;
-      --cream: 240 2% 11%;
-      --light-peach: 240 2% 11%;
       --plum: 265 70% 70%;
 
-      --shadow-xs: 0 1px 2px hsl(0 0% 0% / 0.5);
-      --shadow-sm: 0 1px 3px hsl(0 0% 0% / 0.4), 0 6px 16px hsl(0 0% 0% / 0.5);
       --shadow-md: 0 2px 6px hsl(0 0% 0% / 0.5), 0 14px 40px hsl(0 0% 0% / 0.6);
       --shadow-lg: 0 4px 12px hsl(0 0% 0% / 0.5), 0 28px 80px hsl(0 0% 0% / 0.7);
     }
@@ -240,16 +170,8 @@
     max-width: 1320px;
   }
 
-  .shell-narrow {
-    max-width: 780px;
-  }
-
   .section {
     padding-block: clamp(4.5rem, 9vw, 8rem);
-  }
-
-  .section-tight {
-    padding-block: clamp(3.5rem, 7vw, 6rem);
   }
 
   /* ---- Typography ----------------------------------------------------
@@ -342,14 +264,6 @@
     border-radius: var(--radius);
   }
 
-  .shadow-soft-xs {
-    box-shadow: var(--shadow-xs);
-  }
-
-  .shadow-soft-sm {
-    box-shadow: var(--shadow-sm);
-  }
-
   .shadow-soft-md {
     box-shadow: var(--shadow-md);
   }
@@ -405,16 +319,6 @@
 
   .btn-secondary:hover {
     background-color: hsl(var(--muted-foreground) / 0.18);
-  }
-
-  .btn-outline {
-    background-color: transparent;
-    border: 1px solid hsl(var(--border));
-    color: hsl(var(--foreground));
-  }
-
-  .btn-outline:hover {
-    background-color: hsl(var(--muted));
   }
 
   .btn-block {
