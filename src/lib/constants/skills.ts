@@ -10,26 +10,34 @@ export interface SkillCategory {
 export const SKILLS: SkillCategory[] = [
   {
     icon: Code2,
-    title: "Frontend Development",
+    title: "Frontend",
     color: "bg-mustard/20 text-mustard border-mustard/30",
     items: ["React", "Next.js", "TypeScript", "JavaScript"],
   },
   {
     icon: Palette,
-    title: "Styling & Design",
+    title: "Markup & Styling",
     color: "bg-coral/20 text-coral border-coral/30",
-    items: ["Tailwind CSS", "CSS3", "SCSS", "Responsive Design"],
+    items: ["HTML", "CSS", "Tailwind CSS", "Responsive Design"],
   },
   {
     icon: Zap,
-    title: "State Management",
+    title: "State & Data",
     color: "bg-forest-green/20 text-forest-green border-forest-green/30",
-    items: ["Redux", "Mobx", "Redux Saga", "Context API"],
+    items: ["Redux", "MobX", "Redux Saga", "Context API", "REST APIs"],
   },
   {
     icon: Layout,
-    title: "Tools & Testing",
+    title: "Tools",
     color: "bg-warm-brown/20 text-warm-brown border-warm-brown/30",
-    items: ["Git", "Jest", "Chrome DevTools", "Jira"],
+    items: [
+      "Git",
+      "Jest",
+      "Chrome DevTools",
+      "React Profiler",
+      "Jira",
+      "Mixpanel",
+      "AppsFlyer",
+    ],
   },
 ];

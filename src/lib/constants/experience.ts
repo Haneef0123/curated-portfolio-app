@@ -8,10 +8,14 @@ export const EXPERIENCES: Experience[] = [
     location: "India",
     color: "border-l-mustard",
     achievements: [
-      "Engineered a real-time gold rate tracking platform using React, Redux, and SSR; optimized data fetching and UI rendering to boost user engagement by 40%",
-      "Revamped the IPO application platform using Next.js and TypeScript; implemented conditional form logic and user-centric validation workflows, resulting in a 70% increase in successful applications",
-      "Developed interactive educational platforms (UpLearn, Webinars) with Tailwind CSS; leveraged Mixpanel event tracking to improve feature engagement and increase retention by 30%",
-      "Implemented Account Aggregator onboarding flows by integrating external APIs; led to a 50% reduction in drop-off rates",
+      "Built real-time trading and investment-research experiences with live market prices, charts, financial data, and interactive tables",
+      "Created reusable frontend foundations for data-heavy financial products, including API integrations, caching, responsive components, and clear loading and error states",
+      "Improved page speed and reliability through server-side rendering, lazy loading, data caching, and frontend architecture improvements",
+      "Implemented technical SEO for financial content with metadata, structured data, sitemap, redirects, and search-friendly navigation",
+      "Developed account-opening and IPO workflows with scalable forms, validation, and API integration to support smoother customer journeys",
+      "Partnered with backend teams on financial API contracts and account aggregation flows, improving integration reliability",
+      "Added product analytics for high-intent actions and strengthened privacy by masking sensitive data in logs and improving web-security headers",
+      "Mentored junior engineers through code reviews and knowledge sharing, promoting maintainable frontend practices",
     ],
   },
   {
@@ -21,10 +25,10 @@ export const EXPERIENCES: Experience[] = [
     location: "India",
     color: "border-l-forest-green",
     achievements: [
-      "Engineered analytics and recovery modules using React and Ant Design, improving client data processing efficiency",
-      "Constructed a real-time operational dashboard using Redux Saga and React Hooks; optimized data polling and UI state updates to enable instant data visibility",
-      "Debugged and optimized UI components via Chrome DevTools and React Profiler; eliminated layout shifts and JavaScript errors, improving stability",
-      "Refactored asynchronous data logic using Redux Thunk and Mobx; minimized redundant network calls, resulting in a 30% reduction in API latency",
+      "Designed snapshot dashboard experiences with React, Redux Saga, and hooks to support real-time data visualization",
+      "Refactored frontend state management with MobX and Redux patterns, improving maintainability and reducing API latency by 30%",
+      "Established practical debugging and performance optimization practices using Chrome DevTools and React Profiler",
+      "Improved responsive and cross-browser UI quality with modern CSS, Flexbox, and Grid, increasing user satisfaction by 35%",
     ],
   },
   {
@@ -34,10 +38,9 @@ export const EXPERIENCES: Experience[] = [
     location: "India",
     color: "border-l-coral",
     achievements: [
-      "Delivered dynamic airline web interfaces using React and RESTful API integration; implemented lazy loading and request throttling to streamline data flow",
-      "Diagnosed and resolved layout and rendering issues using Chrome DevTools; reduced CLS (Cumulative Layout Shift) and improved page load performance by 15%",
-      "Crafted responsive user interfaces using mobile-first CSS3 and modular SCSS; increased engagement on tablets and smartphones by 25%",
-      "Produced reusable marketing components within Agile 2-week sprints; collaborated with QA and content teams for timely campaign launches",
+      "Built scalable React components and REST API integrations for airline-platform experiences",
+      "Improved performance with lazy loading and request throttling, reducing layout shift by 15%",
+      "Delivered reusable component libraries aligned with design systems to accelerate delivery across teams",
     ],
   },
 ];

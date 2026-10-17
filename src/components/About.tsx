@@ -41,29 +41,32 @@ export const About = () => {
               <span className="font-semibold text-foreground">
                 Front End Developer
               </span>{" "}
-              with over 6 years of experience building dynamic, responsive web
-              applications. My expertise spans across{" "}
+              with over 8 years of experience building scalable,
+              high-performance web applications and financial-product
+              experiences. My expertise spans{" "}
               <span className="font-semibold text-foreground">
-                React, Next.js, JavaScript, TypeScript, and Redux
+                React, Next.js, TypeScript, real-time data UI, platform
+                performance, SEO, analytics, and privacy-aware engineering
               </span>
-              , with a proven track record in delivering user-focused fintech
-              and educational platforms from design to deployment.
+              .
             </p>
 
             <p className="hidden md:block">
-              I specialize in creating scalable frontend architectures,
-              implementing efficient state management solutions, and integrating
-              RESTful APIs. My work focuses on performance optimization,
-              exceptional user experiences, and seamless collaboration with
-              cross-functional teams in Agile environments.
+              I create reusable frontend foundations for data-heavy financial
+              products — API integrations, caching, responsive components, and
+              clear loading and error states — while improving page speed and
+              reliability through server-side rendering, lazy loading, and
+              frontend architecture improvements.
             </p>
 
             <p>
               Currently at{" "}
               <span className="font-semibold text-foreground">Upstox</span>,
-              I've engineered real-time tracking platforms, revamped IPO
-              applications, and developed interactive educational platforms that
-              have significantly improved user engagement and retention rates.
+              I've built real-time trading and investment-research experiences
+              with live market prices, charts, and interactive tables, shipped
+              account-opening and IPO workflows, implemented technical SEO for
+              financial content, and mentored junior engineers through code
+              reviews and knowledge sharing.
             </p>
           </div>
 

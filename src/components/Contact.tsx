@@ -137,7 +137,7 @@ export const Contact = () => {
       {/* Footer */}
       <footer className="container mx-auto px-4 mt-12 md:mt-16 pt-6 md:pt-8 border-t border-border">
         <div className="text-center text-xs md:text-sm text-muted-foreground px-4">
-          <p>© 2025 Shaik Haneef Basha.</p>
+          <p>© 2026 Shaik Haneef Basha.</p>
         </div>
       </footer>
     </section>

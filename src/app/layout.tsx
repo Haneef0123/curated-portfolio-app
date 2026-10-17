@@ -22,12 +22,12 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Shaik Haneef Basha - Front End Developer",
   description:
-    "Portfolio of Shaik Haneef Basha - Experienced Front End Developer with 6+ years expertise in React, Next.js, TypeScript",
+    "Portfolio of Shaik Haneef Basha - Experienced Front End Developer with 8+ years expertise in React, Next.js, TypeScript",
   authors: [{ name: "Shaik Haneef Basha" }],
   openGraph: {
     title: "Shaik Haneef Basha - Front End Developer",
     description:
-      "Experienced Front End Developer with 6+ years in React, Next.js, TypeScript",
+      "Experienced Front End Developer with 8+ years in React, Next.js, TypeScript",
     type: "website",
   },
 };

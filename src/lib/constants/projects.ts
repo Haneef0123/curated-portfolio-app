@@ -1,4 +1,4 @@
-import { TrendingUp, Users, Zap, LucideIcon } from "lucide-react";
+import { TrendingUp, Users, Search, LineChart, LucideIcon } from "lucide-react";
 
 export interface ProjectData {
   title: string;
@@ -11,46 +11,46 @@ export interface ProjectData {
 
 export const PROJECTS: ProjectData[] = [
   {
-    title: "Real-Time Gold Rate Tracker",
+    title: "Real-Time Trading & Investment Research",
     company: "Upstox",
     description:
-      "Engineered a real-time gold rate tracking platform with React, Redux, and Server-Side Rendering. Optimized data fetching and UI rendering for seamless user experience.",
-    impact: "40% increase in user engagement",
+      "Built real-time trading and investment-research experiences with live market prices, charts, financial data, and interactive tables, backed by reusable frontend foundations for data-heavy financial products.",
+    impact: "Faster, more reliable data-heavy pages",
     icon: TrendingUp,
     color: "bg-mustard/20 text-mustard",
   },
   {
-    title: "IPO Application Platform",
+    title: "Account-Opening & IPO Workflows",
     company: "Upstox",
     description:
-      "Revamped the IPO application platform using Next.js and TypeScript with conditional form logic and user-centric validation workflows.",
-    impact: "70% increase in successful applications",
+      "Developed account-opening and IPO workflows with scalable forms, validation, and API integration, partnered with backend teams on financial API contracts and account aggregation flows.",
+    impact: "Smoother customer onboarding journeys",
     icon: Users,
     color: "bg-forest-green/20 text-forest-green",
   },
   {
-    title: "Educational Platforms (UpLearn, Webinars)",
+    title: "Technical SEO & Product Analytics",
     company: "Upstox",
     description:
-      "Developed interactive educational platforms with Tailwind CSS, leveraging Mixpanel event tracking and user segmentation for better engagement.",
-    impact: "30% improvement in retention",
-    icon: Zap,
+      "Implemented technical SEO for financial content with metadata, structured data, sitemap, redirects, and search-friendly navigation, plus product analytics for high-intent actions.",
+    impact: "Search-friendly, privacy-aware platform",
+    icon: Search,
     color: "bg-coral/20 text-coral",
   },
   {
     title: "Real-Time Operational Dashboard",
     company: "MSys Technologies",
     description:
-      "Built a comprehensive dashboard using Redux Saga and React Hooks, optimizing data polling and UI state updates for instant data visibility.",
-    impact: "Enabled instant decision-making",
-    icon: TrendingUp,
+      "Designed snapshot dashboard experiences with React, Redux Saga, and hooks for real-time data visualization, refactoring state management with MobX and Redux patterns.",
+    impact: "30% reduction in API latency",
+    icon: LineChart,
     color: "bg-warm-brown/20 text-warm-brown",
   },
 ];
 
 export const OTHER_ACHIEVEMENTS = [
-  "50% reduction in drop-off rates through optimized onboarding flows",
-  "30% reduction in API latency through smart caching strategies",
-  "15% improvement in page load performance across all applications",
-  "25% increase in mobile engagement through responsive design",
+  "30% reduction in API latency through refactored state management",
+  "15% reduction in layout shift with lazy loading and request throttling",
+  "35% increase in user satisfaction through improved responsive and cross-browser UI",
+  "Reusable component libraries aligned with design systems to accelerate delivery",
 ] as const;

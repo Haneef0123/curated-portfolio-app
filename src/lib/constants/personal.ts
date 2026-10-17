@@ -5,7 +5,7 @@ export const PERSONAL_INFO: PersonalInfo = {
   fullName: "Shaik Haneef Basha",
   title: "Front End Developer",
   description:
-    "With over 6 years of expertise in React, Next.js, and TypeScript, I craft scalable, user-focused web applications that drive real business results.",
+    "With over 8 years of experience, I build scalable, high-performance web applications and financial-product experiences — specialising in React, Next.js, TypeScript, real-time data UI, and privacy-aware engineering.",
   email: "bashahaneef103@gmail.com",
   phone: "+91 7386353383",
   location: "India",
@@ -19,7 +19,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
   },
   {
     name: "GitHub",
-    url: "https://github.com",
+    url: "https://github.com/Haneef0123",
     icon: "github",
   },
   {
@@ -30,24 +30,24 @@ export const SOCIAL_LINKS: SocialLink[] = [
 ];
 
 export const EDUCATION: Education = {
-  degree: "B.Tech – Computer Science and Engineering",
-  institution: "G. PullaReddy Engineering College, Kurnool",
-  period: "Sept 2014 – May 2018",
+  degree: "B.Tech – Computer Science and Technology",
+  institution: "G Pulla Reddy Engineering College, India",
+  period: "2014 – 2018",
 };
 
 export const ABOUT_STATS = [
-  { value: 6, label: "Years Experience", color: "text-warm-brown" },
+  { value: 8, label: "Years Experience", color: "text-warm-brown" },
   { value: 3, label: "Major Companies", color: "text-forest-green" },
   { value: 15, label: "Projects Delivered", color: "text-coral" },
 ] as const;
 
 export const CORE_EXPERTISE = [
-  "RESTful APIs",
-  "UI/UX Optimization",
+  "Real-time Data UI",
+  "Platform Performance",
+  "Technical SEO",
+  "Product Analytics",
+  "Privacy-aware Engineering",
+  "REST API Integration",
   "Performance Tuning",
-  "Agile Development",
   "Responsive Design",
-  "Cross-browser Compatibility",
-  "Version Control (Git)",
-  "Team Collaboration",
 ] as const;
