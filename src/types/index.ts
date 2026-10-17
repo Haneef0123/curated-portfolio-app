@@ -41,22 +41,7 @@ export interface Experience {
   role: string;
   period: string;
   location: string;
-  color: string;
   achievements: string[];
-}
-
-export interface Project {
-  title: string;
-  company: string;
-  description: string;
-  impact: string;
-  color: string;
-}
-
-export interface Stat {
-  value: number;
-  label: string;
-  color: string;
 }
 
 export interface Education {

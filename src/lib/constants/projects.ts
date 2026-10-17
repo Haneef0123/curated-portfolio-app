@@ -6,7 +6,7 @@ import {
   LucideIcon,
 } from "lucide-react";
 
-export interface ProjectData {
+interface ProjectData {
   title: string;
   company: string;
   description: string;

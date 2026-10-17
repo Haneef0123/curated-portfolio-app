@@ -7,9 +7,8 @@ A modern, responsive portfolio website built with Next.js 14, showcasing profess
 - **Next.js 14** - React framework with App Router
 - **TypeScript** - Type-safe development
 - **Tailwind CSS** - Utility-first styling
-- **Radix UI** - Accessible component primitives
-- **Lucide React** - Beautiful icons
-- **Framer Motion** - Smooth animations
+- **Lucide React** - Interface icons
+- **Simple Icons** (react-icons) - Brand marks
 
 ## 🛠️ Getting Started
 
@@ -46,26 +45,25 @@ The application will be available at `http://localhost:3000`
 
 ```
 src/
-├── app/                    # Next.js App Router
+├── app/                    # Next.js App Router (layout, pages, SEO routes)
+├── assets/                 # Images
 ├── components/             # React components
-│   ├── common/            # Reusable UI components
-│   ├── svg/               # SVG components
-│   └── ui/                # shadcn/ui components
-├── lib/                   # Utilities and constants
-│   ├── constants/         # Application constants
-│   └── utils/             # Helper functions
-├── hooks/                 # Custom React hooks
-└── types/                 # TypeScript type definitions
+│   └── common/             # Reusable UI components
+├── lib/                    # Constants, helpers and site config
+│   ├── constants/          # Application constants
+│   ├── site.ts             # Canonical site URL
+│   └── utils.ts            # Helper functions
+└── types/                  # TypeScript type definitions
 ```
 
 ## 🎨 Features
 
 - **Responsive Design** - Mobile-first approach
-- **Dark Mode Support** - Comfortable viewing in any environment
-- **Smooth Animations** - Enhanced user experience
-- **SEO Optimized** - Better search engine visibility
+- **Dark Mode Support** - Follows the system appearance, no toggle
+- **SEO Optimized** - Metadata, sitemap and robots
 - **Type Safe** - Full TypeScript coverage
 - **Component-based Architecture** - Maintainable and scalable code
+- **Reduced-motion aware** - Honours the system preference
 
 ## 📝 Customization
 

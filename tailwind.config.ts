@@ -3,21 +3,8 @@ import type { Config } from "tailwindcss";
 export default {
   // Follow the system appearance, matching the token strategy in index.css.
   darkMode: "media",
-  content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
-  ],
-  prefix: "",
+  content: ["./src/**/*.{ts,tsx}"],
   theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
     extend: {
       fontFamily: {
         // System stack first: the platform ships optical sizing, per-size
@@ -32,12 +19,9 @@ export default {
           "Arial",
           "sans-serif",
         ],
-        serif: ["var(--font-serif)", "Georgia", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
@@ -48,10 +32,6 @@ export default {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
         },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
         muted: {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
@@ -60,27 +40,17 @@ export default {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        "warm-brown": "hsl(var(--warm-brown))",
         mustard: "hsl(var(--mustard))",
         "forest-green": "hsl(var(--forest-green))",
         coral: "hsl(var(--coral))",
-        cream: "hsl(var(--cream))",
-        "light-peach": "hsl(var(--light-peach))",
         plum: "hsl(var(--plum))",
       },
       borderRadius: {
-        lg: "var(--radius)",
         md: "calc(var(--radius) - 4px)",
-        sm: "calc(var(--radius) - 8px)",
-        xl: "calc(var(--radius) + 4px)",
         "2xl": "calc(var(--radius) + 10px)",
         "3xl": "calc(var(--radius) + 18px)",
       },

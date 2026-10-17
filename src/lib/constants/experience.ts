@@ -6,7 +6,6 @@ export const EXPERIENCES: Experience[] = [
     role: "Front End Developer",
     period: "Jan 2023 – Present",
     location: "India",
-    color: "border-l-mustard",
     achievements: [
       "Built real-time trading and investment-research experiences with live market prices, charts, financial data, and interactive tables",
       "Created reusable frontend foundations for data-heavy financial products, including API integrations, caching, responsive components, and clear loading and error states",
@@ -23,7 +22,6 @@ export const EXPERIENCES: Experience[] = [
     role: "Front End Developer",
     period: "Jul 2021 – Jan 2023",
     location: "India",
-    color: "border-l-forest-green",
     achievements: [
       "Designed snapshot dashboard experiences with React, Redux Saga, and hooks to support real-time data visualization",
       "Refactored frontend state management with MobX and Redux patterns, improving maintainability and reducing API latency by 30%",
@@ -36,7 +34,6 @@ export const EXPERIENCES: Experience[] = [
     role: "Front End Developer",
     period: "Oct 2018 – Jun 2021",
     location: "India",
-    color: "border-l-coral",
     achievements: [
       "Built scalable React components and REST API integrations for airline-platform experiences",
       "Improved performance with lazy loading and request throttling, reducing layout shift by 15%",
