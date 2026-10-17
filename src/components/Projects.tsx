@@ -1,114 +1,103 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { ArrowUpRight, Check } from "lucide-react";
 import { SectionBadge } from "@/components/common/SectionBadge";
-import {
-  DecorativeUnderline,
-  UnderlineVariants,
-} from "@/components/svg/DecorativeUnderline";
-import { PROJECTS, OTHER_ACHIEVEMENTS } from "@/lib/constants/projects";
-import { useDesktopScrollAnimation } from "@/hooks/use-desktop-scroll-animation";
+import { OTHER_ACHIEVEMENTS, PROJECTS } from "@/lib/constants/projects";
+import { useReveal } from "@/hooks/use-reveal";
+import { cn } from "@/lib/utils";
 
 export const Projects = () => {
-  const { ref, isVisible } = useDesktopScrollAnimation(0.1);
-  const { ref: achievementsRef, isVisible: achievementsVisible } =
-    useDesktopScrollAnimation(0.2);
+  const grid = useReveal();
+  const highlights = useReveal();
 
   return (
-    <section id="projects" className="py-12 md:py-20 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          {/* Section badge */}
-          <div className="text-center mb-6">
-            <SectionBadge variant="accent">Featured Work</SectionBadge>
-          </div>
+    <section id="projects" className="section">
+      <div className="shell">
+        <SectionBadge variant="accent">Featured Work</SectionBadge>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
-            Projects that
-            <br />
-            <span className="relative inline-block">
-              drive results
-              <DecorativeUnderline
-                pathData={UnderlineVariants.straight}
-                color="hsl(var(--mustard))"
-              />
-            </span>
-          </h2>
+        <h2 className="type-title mt-6 max-w-[20ch] text-foreground">
+          Projects that drive results.
+        </h2>
 
-          <p className="text-center text-sm md:text-base text-muted-foreground mb-12 md:mb-16 max-w-2xl mx-auto px-4">
-            Highlighting key projects that demonstrate my expertise in building
-            scalable, user-focused applications
-          </p>
+        <p className="type-lead mt-6 max-w-[44rem] text-muted-foreground">
+          Key projects that demonstrate my expertise in building scalable,
+          user-focused applications.
+        </p>
 
-          {/* Projects Grid */}
-          <div
-            ref={ref}
-            className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6"
-          >
-            {PROJECTS.map((project, index) => (
-              <Card
-                key={index}
-                className={`group p-5 md:p-6 hover:shadow-lg transition-all duration-500 hover:-translate-y-1 border-2 border-border hover:border-current cursor-pointer ${
-                  isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "md:opacity-0 md:translate-y-8"
-                }`}
-                style={{
-                  transitionDelay: isVisible ? `${index * 100}ms` : "0ms",
-                }}
+        <div
+          ref={grid.ref}
+          className="mt-14 grid gap-5 md:grid-cols-2"
+        >
+          {PROJECTS.map((project, index) => (
+            <article
+              key={project.title}
+              className={cn(
+                "reveal surface flex h-full flex-col p-6 md:p-8",
+                grid.isVisible && "is-visible"
+              )}
+              style={{
+                transitionDelay: grid.isVisible ? `${index * 80}ms` : "0ms",
+              }}
+            >
+              <span
+                className={cn(
+                  "inline-flex h-11 w-11 items-center justify-center rounded-2xl",
+                  project.color
+                )}
               >
-                <div
-                  className={`inline-flex p-2.5 md:p-3 rounded-xl ${project.color} mb-3 md:mb-4 group-hover:scale-110 transition-transform`}
-                >
-                  <project.icon className="h-5 w-5 md:h-6 md:w-6" />
-                </div>
+                <project.icon className="h-5 w-5" aria-hidden="true" />
+              </span>
 
-                <div className="flex items-start justify-between gap-2 mb-2 md:mb-3">
-                  <h3 className="font-bold text-lg md:text-xl group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                  <ArrowUpRight className="h-4 w-4 md:h-5 md:w-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform flex-shrink-0" />
-                </div>
+              <div className="mt-6 flex items-start justify-between gap-4">
+                <h3 className="type-title-sm text-foreground">
+                  {project.title}
+                </h3>
+                <ArrowUpRight
+                  className="mt-1 h-5 w-5 shrink-0 text-muted-foreground"
+                  aria-hidden="true"
+                />
+              </div>
 
-                <p className="text-xs md:text-sm font-semibold text-muted-foreground mb-2 md:mb-3">
-                  {project.company}
-                </p>
+              <p className="type-caption mt-2 font-semibold text-primary">
+                {project.company}
+              </p>
 
-                <p className="text-sm md:text-base text-muted-foreground mb-3 md:mb-4 leading-relaxed">
-                  {project.description}
-                </p>
+              <p className="type-body mt-4 text-muted-foreground">
+                {project.description}
+              </p>
 
-                <div className="inline-block px-3 md:px-4 py-1.5 md:py-2 bg-accent/10 text-accent rounded-full text-xs md:text-sm font-semibold">
-                  ✨ {project.impact}
-                </div>
-              </Card>
+              <span className="type-caption mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-accent/10 px-3.5 py-2 font-semibold text-accent">
+                {project.impact}
+              </span>
+            </article>
+          ))}
+        </div>
+
+        <div
+          ref={highlights.ref}
+          className={cn(
+            "reveal surface-muted mt-5 p-6 md:p-8",
+            highlights.isVisible && "is-visible"
+          )}
+        >
+          <h3 className="type-title-sm text-foreground">
+            Other notable achievements
+          </h3>
+
+          <ul className="mt-6 grid gap-4 md:grid-cols-2">
+            {OTHER_ACHIEVEMENTS.map((achievement) => (
+              <li
+                key={achievement}
+                className="type-body flex items-start gap-3 text-muted-foreground"
+              >
+                <Check
+                  className="mt-1 h-4 w-4 shrink-0 text-forest-green"
+                  aria-hidden="true"
+                />
+                <span>{achievement}</span>
+              </li>
             ))}
-          </div>
-
-          {/* Additional highlights */}
-          <div
-            ref={achievementsRef}
-            className={`mt-8 md:mt-12 p-6 md:p-8 bg-muted/50 rounded-3xl transition-all duration-700 ${
-              achievementsVisible
-                ? "opacity-100 translate-y-0"
-                : "md:opacity-0 md:translate-y-6"
-            }`}
-          >
-            <h3 className="font-bold text-base md:text-lg mb-3 md:mb-4">
-              Other Notable Achievements
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 text-xs md:text-sm text-muted-foreground">
-              {OTHER_ACHIEVEMENTS.map((achievement, index) => (
-                <div key={index} className="flex items-start gap-2">
-                  <span className="text-forest-green text-base md:text-lg flex-shrink-0">
-                    ✓
-                  </span>
-                  <span>{achievement}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+          </ul>
         </div>
       </div>
     </section>

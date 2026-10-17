@@ -2,99 +2,95 @@
 
 import { SectionBadge } from "@/components/common/SectionBadge";
 import { SKILLS } from "@/lib/constants/skills";
-import {
-  DecorativeUnderline,
-  UnderlineVariants,
-} from "@/components/svg/DecorativeUnderline";
 import { CORE_EXPERTISE } from "@/lib/constants/personal";
-import { useDesktopScrollAnimation } from "@/hooks/use-desktop-scroll-animation";
+import { useReveal } from "@/hooks/use-reveal";
+import { cn } from "@/lib/utils";
 
 export const Skills = () => {
-  const { ref, isVisible } = useDesktopScrollAnimation(0.1);
+  const grid = useReveal();
+  const expertise = useReveal();
 
   return (
-    <section id="skills" className="py-12 md:py-20 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          {/* Section badge */}
-          <div className="text-center mb-6">
-            <SectionBadge variant="accent">Technical Skills</SectionBadge>
-          </div>
+    <section id="skills" className="section">
+      <div className="shell">
+        <SectionBadge variant="accent">Technical Skills</SectionBadge>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
-            My toolkit for
-            <br />
-            <span className="relative inline-block">
-              building greatness
-              <DecorativeUnderline
-                pathData={UnderlineVariants.smooth}
-                color="hsl(var(--coral))"
-              />
-            </span>
-          </h2>
+        <h2 className="type-title mt-6 max-w-[22ch] text-foreground">
+          My toolkit for building greatness.
+        </h2>
 
-          <p className="text-center text-sm md:text-base text-muted-foreground mb-12 md:mb-16 max-w-2xl mx-auto px-4">
-            A comprehensive set of technologies and tools I use to bring ideas
-            to life
-          </p>
+        <p className="type-lead mt-6 max-w-[44rem] text-muted-foreground">
+          A focused set of technologies and tools I use to bring ideas to life.
+        </p>
 
-          {/* Skills Grid */}
-          <div
-            ref={ref}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6"
-          >
-            {SKILLS.map((skill, index) => (
-              <div
-                key={index}
-                className={`group p-5 md:p-6 bg-card rounded-3xl border-2 border-border hover:border-current transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
-                  isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "md:opacity-0 md:translate-y-8"
-                }`}
-                style={{
-                  transitionDelay: isVisible ? `${index * 100}ms` : "0ms",
-                  transitionDuration: "600ms",
-                }}
-              >
-                <div
-                  className={`inline-flex p-3 md:p-4 rounded-2xl ${skill.color} border-2 mb-3 md:mb-4 group-hover:scale-110 transition-transform`}
-                >
-                  <skill.icon className="h-5 w-5 md:h-6 md:w-6" />
-                </div>
-                <h3 className="font-bold text-lg md:text-xl mb-3 md:mb-4">
-                  {skill.title}
-                </h3>
-                <ul className="space-y-2">
-                  {skill.items.map((item, i) => (
-                    <li
-                      key={i}
-                      className="text-xs md:text-sm text-muted-foreground flex items-center"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-current mr-2 flex-shrink-0 opacity-50" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-
-          {/* Additional Skills */}
-          <div className="mt-8 md:mt-12 p-6 md:p-8 bg-muted/50 rounded-3xl">
-            <h3 className="font-bold text-base md:text-lg mb-3 md:mb-4">
-              Core Areas of Expertise
-            </h3>
-            <div className="flex flex-wrap gap-2 md:gap-3">
-              {CORE_EXPERTISE.map((item, index) => (
+        <div
+          ref={grid.ref}
+          className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
+        >
+          {SKILLS.map((skill, index) => (
+            <article
+              key={skill.title}
+              className={cn(
+                "reveal surface h-full p-6",
+                grid.isVisible && "is-visible"
+              )}
+              style={{
+                transitionDelay: grid.isVisible ? `${index * 70}ms` : "0ms",
+              }}
+            >
+              <h3 className="type-title-sm flex items-start gap-2.5 text-foreground lg:min-h-[2.32em]">
                 <span
-                  key={index}
-                  className="px-3 md:px-4 py-1.5 md:py-2 bg-background rounded-full text-xs md:text-sm font-medium border border-border"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
+                  aria-hidden="true"
+                  className={cn(
+                    "mt-[0.47em] h-1.5 w-1.5 shrink-0 rounded-full",
+                    skill.dot
+                  )}
+                />
+                {skill.title}
+              </h3>
+
+              <ul className="mt-6 space-y-3">
+                {skill.items.map((item) => (
+                  <li key={item.name} className="flex items-center gap-3">
+                    <span
+                      aria-hidden="true"
+                      className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-[10px] border border-border/60 bg-muted"
+                    >
+                      <item.icon
+                        className={cn("h-[17px] w-[17px]", item.color)}
+                      />
+                    </span>
+                    <span className="type-small text-muted-foreground">
+                      {item.name}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+
+        <div
+          ref={expertise.ref}
+          className={cn(
+            "reveal surface-muted mt-12 p-6 md:p-8",
+            expertise.isVisible && "is-visible"
+          )}
+        >
+          <h3 className="type-small font-semibold text-foreground">
+            Core areas of expertise
+          </h3>
+
+          <ul className="mt-5 flex flex-wrap gap-2.5">
+            {CORE_EXPERTISE.map((item) => (
+              <li
+                key={item}
+                className="type-caption rounded-full border border-border/70 bg-background px-4 py-2 text-muted-foreground"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

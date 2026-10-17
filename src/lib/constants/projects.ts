@@ -1,4 +1,10 @@
-import { TrendingUp, Users, Search, LineChart, LucideIcon } from "lucide-react";
+import {
+  CandlestickChart,
+  Gauge,
+  SearchCheck,
+  UserRoundPlus,
+  LucideIcon,
+} from "lucide-react";
 
 export interface ProjectData {
   title: string;
@@ -16,7 +22,7 @@ export const PROJECTS: ProjectData[] = [
     description:
       "Built real-time trading and investment-research experiences with live market prices, charts, financial data, and interactive tables, backed by reusable frontend foundations for data-heavy financial products.",
     impact: "Faster, more reliable data-heavy pages",
-    icon: TrendingUp,
+    icon: CandlestickChart,
     color: "bg-mustard/20 text-mustard",
   },
   {
@@ -25,7 +31,7 @@ export const PROJECTS: ProjectData[] = [
     description:
       "Developed account-opening and IPO workflows with scalable forms, validation, and API integration, partnered with backend teams on financial API contracts and account aggregation flows.",
     impact: "Smoother customer onboarding journeys",
-    icon: Users,
+    icon: UserRoundPlus,
     color: "bg-forest-green/20 text-forest-green",
   },
   {
@@ -34,7 +40,7 @@ export const PROJECTS: ProjectData[] = [
     description:
       "Implemented technical SEO for financial content with metadata, structured data, sitemap, redirects, and search-friendly navigation, plus product analytics for high-intent actions.",
     impact: "Search-friendly, privacy-aware platform",
-    icon: Search,
+    icon: SearchCheck,
     color: "bg-coral/20 text-coral",
   },
   {
@@ -43,8 +49,8 @@ export const PROJECTS: ProjectData[] = [
     description:
       "Designed snapshot dashboard experiences with React, Redux Saga, and hooks for real-time data visualization, refactoring state management with MobX and Redux patterns.",
     impact: "30% reduction in API latency",
-    icon: LineChart,
-    color: "bg-warm-brown/20 text-warm-brown",
+    icon: Gauge,
+    color: "bg-plum/20 text-plum",
   },
 ];
 

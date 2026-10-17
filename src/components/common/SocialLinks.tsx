@@ -1,6 +1,9 @@
 "use client";
 
-import { Github, Linkedin, Mail, LucideIcon } from "lucide-react";
+import { Github, Mail, type LucideIcon } from "lucide-react";
+import { FaLinkedinIn } from "react-icons/fa6";
+import { cn } from "@/lib/utils";
+import type { IconComponent } from "@/types";
 
 interface SocialLinksProps {
   links: Array<{
@@ -11,30 +14,39 @@ interface SocialLinksProps {
   className?: string;
 }
 
-const iconMap: Record<string, LucideIcon> = {
-  linkedin: Linkedin,
+/**
+ * Brand marks for the networks, a glyph for email. All render in
+ * `currentColor` so the row stays visually consistent.
+ */
+const iconMap: Record<string, IconComponent> = {
+  linkedin: FaLinkedinIn,
   github: Github,
   mail: Mail,
 };
 
-export const SocialLinks = ({ links, className = "" }: SocialLinksProps) => {
+export const SocialLinks = ({ links, className }: SocialLinksProps) => {
   return (
-    <div className={`flex gap-3 md:gap-4 ${className}`}>
+    <ul className={cn("flex items-center gap-3", className)}>
       {links.map((link) => {
-        const Icon = iconMap[link.icon];
+        const Icon: IconComponent = iconMap[link.icon] ?? Mail;
+        const isExternal = link.icon !== "mail";
+
         return (
-          <a
-            key={link.name}
-            href={link.url}
-            target={link.icon !== "mail" ? "_blank" : undefined}
-            rel={link.icon !== "mail" ? "noopener noreferrer" : undefined}
-            className="p-2.5 md:p-3 rounded-full bg-card hover:bg-accent hover:text-accent-foreground transition-all duration-300 shadow-md hover:shadow-lg"
-            aria-label={link.name}
-          >
-            <Icon className="h-4 w-4 md:h-5 md:w-5" />
-          </a>
+          <li key={link.name}>
+            <a
+              href={link.url}
+              target={isExternal ? "_blank" : undefined}
+              rel={isExternal ? "noopener noreferrer" : undefined}
+              aria-label={link.name}
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border/70 bg-card text-muted-foreground transition-colors duration-200 hover:bg-secondary hover:text-foreground"
+            >
+              <span aria-hidden="true" className="inline-flex">
+                <Icon className="h-[18px] w-[18px]" />
+              </span>
+            </a>
+          </li>
         );
       })}
-    </div>
+    </ul>
   );
 };

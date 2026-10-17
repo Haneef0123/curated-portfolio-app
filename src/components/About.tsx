@@ -1,93 +1,101 @@
 "use client";
 
-import { useScrollAnimation } from "@/hooks/use-scroll-animation";
-import { useCountUp } from "@/hooks/use-count-up";
 import { SectionBadge } from "@/components/common/SectionBadge";
 import { ABOUT_STATS } from "@/lib/constants/personal";
+import { useCountUp } from "@/hooks/use-count-up";
+import { useReveal } from "@/hooks/use-reveal";
+import { cn } from "@/lib/utils";
 
-export const About = () => {
-  const { ref, isVisible } = useScrollAnimation();
-  const { ref: contentRef, isVisible: contentVisible } =
-    useScrollAnimation(0.1);
-  const stats = [
-    useCountUp(ABOUT_STATS[0].value, 2000, isVisible),
-    useCountUp(ABOUT_STATS[1].value, 2000, isVisible),
-    useCountUp(ABOUT_STATS[2].value, 2000, isVisible),
-  ];
+const Stat = ({
+  value,
+  label,
+  visible,
+}: {
+  value: number;
+  label: string;
+  visible: boolean;
+}) => {
+  const count = useCountUp(value, 1800, visible);
 
   return (
-    <section id="about" className="py-10 md:py-20 bg-card">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          {/* Section badge */}
-          <SectionBadge variant="secondary">About Me</SectionBadge>
+    <div>
+      <div className="tabular text-[2.5rem] font-semibold leading-none tracking-[-0.03em] text-foreground md:text-[3.25rem]">
+        {count}
+      </div>
+      <div className="type-small mt-3 text-muted-foreground">{label}</div>
+    </div>
+  );
+};
 
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 md:mb-8">
-            Turning ideas into
-            <br />
-            <span className="text-forest-green">pixel-perfect reality</span>
-          </h2>
+export const About = () => {
+  const content = useReveal();
+  const stats = useReveal();
 
-          <div
-            ref={contentRef}
-            className={`space-y-3 md:space-y-6 text-sm md:text-lg text-muted-foreground leading-relaxed transition-all duration-700 ${
-              contentVisible
-                ? "opacity-100 translate-y-0"
-                : "md:opacity-0 md:translate-y-6"
-            }`}
-          >
-            <p>
-              I'm a{" "}
-              <span className="font-semibold text-foreground">
-                Front End Developer
-              </span>{" "}
-              with over 8 years of experience building scalable,
-              high-performance web applications and financial-product
-              experiences. My expertise spans{" "}
-              <span className="font-semibold text-foreground">
-                React, Next.js, TypeScript, real-time data UI, platform
-                performance, SEO, analytics, and privacy-aware engineering
-              </span>
-              .
-            </p>
+  return (
+    <section id="about" className="section bg-secondary">
+      <div className="shell">
+        <SectionBadge variant="secondary">About</SectionBadge>
 
-            <p className="hidden md:block">
-              I create reusable frontend foundations for data-heavy financial
-              products — API integrations, caching, responsive components, and
-              clear loading and error states — while improving page speed and
-              reliability through server-side rendering, lazy loading, and
-              frontend architecture improvements.
-            </p>
+        <h2 className="type-title mt-6 max-w-[20ch] text-foreground">
+          Turning ideas into pixel-perfect reality.
+        </h2>
 
-            <p>
-              Currently at{" "}
-              <span className="font-semibold text-foreground">Upstox</span>,
-              I've built real-time trading and investment-research experiences
-              with live market prices, charts, and interactive tables, shipped
-              account-opening and IPO workflows, implemented technical SEO for
-              financial content, and mentored junior engineers through code
-              reviews and knowledge sharing.
-            </p>
-          </div>
+        <div
+          ref={content.ref}
+          className={cn(
+            "reveal mt-8 max-w-[48rem] space-y-5",
+            content.isVisible && "is-visible"
+          )}
+        >
+          <p className="type-body text-muted-foreground">
+            I'm a{" "}
+            <span className="font-medium text-foreground">
+              Front End Developer
+            </span>{" "}
+            with over 8 years of experience building scalable, high-performance
+            web applications and financial-product experiences. My expertise
+            spans{" "}
+            <span className="font-medium text-foreground">
+              React, Next.js, TypeScript, real-time data UI, platform
+              performance, SEO, analytics, and privacy-aware engineering
+            </span>
+            .
+          </p>
 
-          {/* Stats */}
-          <div
-            ref={ref}
-            className="grid grid-cols-3 gap-3 md:gap-8 mt-6 md:mt-12 pt-6 md:pt-12 border-t border-border"
-          >
-            {ABOUT_STATS.map((stat, index) => (
-              <div key={stat.label} className="text-center">
-                <div
-                  className={`text-2xl sm:text-3xl md:text-5xl font-bold mb-1 md:mb-2 ${stat.color}`}
-                >
-                  {stats[index]}+
-                </div>
-                <div className="text-xs sm:text-sm text-muted-foreground">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
+          <p className="type-body text-muted-foreground">
+            I create reusable frontend foundations for data-heavy financial
+            products — API integrations, caching, responsive components, and
+            clear loading and error states — while improving page speed and
+            reliability through server-side rendering, lazy loading, and
+            frontend architecture improvements.
+          </p>
+
+          <p className="type-body text-muted-foreground">
+            Currently at{" "}
+            <span className="font-medium text-foreground">Upstox</span>, I've
+            built real-time trading and investment-research experiences with
+            live market prices, charts, and interactive tables, shipped
+            account-opening and IPO workflows, implemented technical SEO for
+            financial content, and mentored junior engineers through code
+            reviews and knowledge sharing.
+          </p>
+        </div>
+
+        <div
+          ref={stats.ref}
+          className={cn(
+            "reveal mt-16 grid grid-cols-1 gap-10 border-t border-border pt-10 sm:grid-cols-3 sm:gap-8",
+            stats.isVisible && "is-visible"
+          )}
+        >
+          {ABOUT_STATS.map((stat) => (
+            <Stat
+              key={stat.label}
+              value={stat.value}
+              label={stat.label}
+              visible={stats.isVisible}
+            />
+          ))}
         </div>
       </div>
     </section>

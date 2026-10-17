@@ -1,94 +1,81 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import Image from "next/image";
-import heroBg from "@/assets/hero-bg.jpg";
 import profileImg from "@/assets/profile.jpg";
 import { PERSONAL_INFO, SOCIAL_LINKS } from "@/lib/constants/personal";
 import { SocialLinks } from "@/components/common/SocialLinks";
-import { DecorativeUnderline } from "@/components/svg/DecorativeUnderline";
-import { scrollToSection } from "@/lib/utils/scroll";
+import { useReveal } from "@/hooks/use-reveal";
+import { cn } from "@/lib/utils";
 
 export const Hero = () => {
+  const copy = useReveal();
+  const portrait = useReveal();
+
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Content */}
-      <div className="container relative z-10 mx-auto px-4 py-12 md:py-20">
-        <div className="max-w-6xl flex flex-col md:flex-row items-center gap-12">
-          <div className="flex-1 order-2 md:order-1">
-            {/* Badge */}
-            <div className="inline-block mb-4 md:mb-6 px-3 md:px-4 py-1.5 md:py-2 bg-mustard/20 border-2 border-mustard rounded-full">
-              <span className="text-xs md:text-sm font-semibold text-warm-brown">
-                {PERSONAL_INFO.title}
-              </span>
-            </div>
+    <section id="top" className="relative overflow-hidden pt-14">
+      {/* Soft wash so the translucent header has something to sit on */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[58%] bg-gradient-to-b from-secondary to-background"
+      />
 
-            {/* Main heading */}
-            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 md:mb-6 leading-tight">
-              Building digital
-              <br />
-              <span className="relative inline-block">
-                experiences
-                <DecorativeUnderline />
-              </span>
-              <br />
-              <span className="text-mustard">that matter</span>
-            </h1>
+      <div className="shell shell-wide relative grid items-center gap-14 py-16 md:grid-cols-[1.05fr_0.95fr] md:gap-16 md:py-20 lg:py-28">
+        <div
+          ref={copy.ref}
+          className={cn("reveal", copy.isVisible && "is-visible")}
+        >
+          <span className="eyebrow text-primary">{PERSONAL_INFO.title}</span>
 
-            {/* Description */}
-            <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 md:mb-8 max-w-2xl leading-relaxed">
-              Hi, I'm{" "}
-              <span className="font-semibold text-foreground">
-                {PERSONAL_INFO.fullName}
-              </span>
-              . {PERSONAL_INFO.description}
-            </p>
+          <h1 className="type-display mt-5 text-foreground [text-wrap:normal]">
+            Building digital
+            <br />
+            experiences that matter.
+          </h1>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4 mb-8 md:mb-12">
-              <Button
-                size="lg"
-                className="bg-warm-brown hover:bg-warm-brown/90 text-primary-foreground font-semibold rounded-full px-6 md:px-8 w-full sm:w-auto group"
-                onClick={() => scrollToSection("contact")}
-              >
-                Get In Touch
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-2 border-warm-brown text-warm-brown hover:bg-warm-brown hover:text-primary-foreground font-semibold rounded-full px-6 md:px-8 w-full sm:w-auto"
-                onClick={() => scrollToSection("experience")}
-              >
-                View Work
-              </Button>
-            </div>
+          <p className="type-lead mt-7 max-w-[38rem] text-muted-foreground">
+            Hi, I'm{" "}
+            <span className="font-medium text-foreground">
+              {PERSONAL_INFO.fullName}
+            </span>
+            . {PERSONAL_INFO.description}
+          </p>
 
-            {/* Social Links */}
-            <div className="flex justify-center md:justify-start">
-              <SocialLinks links={SOCIAL_LINKS} />
-            </div>
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <a href="#contact" className="btn btn-lg btn-primary">
+              Get in touch
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </a>
+            <a href="#experience" className="btn btn-lg btn-secondary">
+              View work
+            </a>
           </div>
 
-          {/* Profile Image */}
-          <div className="flex-shrink-0 order-1 md:order-2">
-            <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64">
+          <SocialLinks links={SOCIAL_LINKS} className="mt-10" />
+        </div>
+
+        <div
+          ref={portrait.ref}
+          className={cn("reveal", portrait.isVisible && "is-visible")}
+        >
+          <div className="relative mx-auto w-full max-w-[420px]">
+            {/* Depth behind the portrait: a soft, coloured bloom */}
+            <div
+              aria-hidden="true"
+              className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-tr from-mustard/30 via-coral/20 to-forest-green/25 blur-2xl"
+            />
+            <figure className="relative overflow-hidden rounded-[2rem] border border-border/70 bg-card shadow-soft-lg">
               <img
                 src={profileImg.src}
-                alt={`${PERSONAL_INFO.fullName} - ${PERSONAL_INFO.title}`}
-                className="w-full h-full object-cover rounded-full border-4 border-mustard shadow-2xl"
+                alt={`Portrait of ${PERSONAL_INFO.fullName}`}
+                width={1024}
+                height={1024}
+                className="aspect-square w-full object-cover"
+                decoding="async"
               />
-              <div className="absolute -bottom-2 -right-2 w-12 h-12 sm:w-16 sm:h-16 bg-coral rounded-full border-4 border-background flex items-center justify-center">
-                <span className="text-xl sm:text-2xl">👋</span>
-              </div>
-            </div>
+            </figure>
           </div>
         </div>
       </div>
-      {/* Decorative elements */}
-      <div className="absolute top-20 right-10 w-32 h-32 bg-mustard/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-10 w-40 h-40 bg-coral/20 rounded-full blur-3xl" />
     </section>
   );
 };

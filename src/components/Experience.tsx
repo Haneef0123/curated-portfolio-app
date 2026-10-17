@@ -1,113 +1,119 @@
 "use client";
 
+import { Calendar, GraduationCap } from "lucide-react";
+import { SectionBadge } from "@/components/common/SectionBadge";
 import { EDUCATION, EXPERIENCES } from "@/lib/constants";
-import { Briefcase, Calendar } from "lucide-react";
-import { useDesktopScrollAnimation } from "@/hooks/use-desktop-scroll-animation";
+import { useReveal } from "@/hooks/use-reveal";
+import { cn } from "@/lib/utils";
+
+/** Accent tile per role — the monogram reads like an app icon. */
+const MONOGRAMS = [
+  "border-mustard/40 bg-mustard/15",
+  "border-forest-green/40 bg-forest-green/15",
+  "border-coral/40 bg-coral/15",
+] as const;
 
 export const Experience = () => {
-  const { ref, isVisible } = useDesktopScrollAnimation(0.1);
+  const timeline = useReveal();
+  const education = useReveal();
 
   return (
-    <section id="experience" className="py-12 md:py-20 bg-card">
-      <div className="container mx-auto px-4">
-        <div className="max-w-5xl mx-auto">
-          {/* Section badge */}
-          <div className="text-center mb-6">
-            <div className="inline-block px-4 py-2 bg-warm-brown/10 border border-warm-brown/30 rounded-full">
-              <span className="text-sm font-semibold text-warm-brown">
-                Professional Journey
-              </span>
-            </div>
-          </div>
+    <section id="experience" className="section bg-secondary">
+      <div className="shell">
+        <SectionBadge>Professional Journey</SectionBadge>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
-            Where I've
-            <br />
-            <span className="text-warm-brown">made an impact</span>
-          </h2>
+        <h2 className="type-title mt-6 max-w-[20ch] text-foreground">
+          Where I've made an impact.
+        </h2>
 
-          <p className="text-center text-sm md:text-base text-muted-foreground mb-12 md:mb-16 max-w-2xl mx-auto px-4">
-            A timeline of my professional growth and key contributions
-          </p>
+        <p className="type-lead mt-6 max-w-[44rem] text-muted-foreground">
+          A timeline of my professional growth and key contributions.
+        </p>
 
-          {/* Timeline */}
-          <div ref={ref} className="space-y-6 md:space-y-8">
-            {EXPERIENCES.map((exp, index) => (
-              <div
-                key={index}
-                className={`relative md:pl-8 md:border-l-4 ${
-                  exp.color
-                } md:pb-8 ${
-                  index !== EXPERIENCES.length - 1 ? "pb-6 md:pb-0" : ""
-                } md:last:pb-0 transition-all duration-600 ${
-                  isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "md:opacity-0 md:translate-y-8"
-                }`}
-                style={{
-                  transitionDelay: isVisible ? `${index * 100}ms` : "0ms",
-                }}
-              >
-                {/* Timeline dot - hidden on mobile */}
-                <div className="hidden md:block absolute left-[-13px] top-0 w-6 h-6 rounded-full bg-background border-4 border-current" />
+        <div ref={timeline.ref} className="mt-14 space-y-5">
+          {EXPERIENCES.map((experience, index) => (
+            <article
+              key={`${experience.company}-${experience.period}`}
+              className={cn(
+                "reveal surface p-6 md:p-8",
+                timeline.isVisible && "is-visible"
+              )}
+              style={{
+                transitionDelay: timeline.isVisible
+                  ? `${index * 90}ms`
+                  : "0ms",
+              }}
+            >
+              <header className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                <div className="flex min-w-0 items-start gap-4">
+                  <span
+                    aria-hidden="true"
+                    className={cn(
+                      "inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border text-[17px] font-semibold text-foreground",
+                      MONOGRAMS[index % MONOGRAMS.length]
+                    )}
+                  >
+                    {experience.company.charAt(0)}
+                  </span>
 
-                <div className="bg-background rounded-2xl p-4 md:p-6 shadow-sm hover:shadow-md transition-shadow">
-                  {/* Header */}
-                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 md:gap-4 mb-3 md:mb-4">
-                    <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <Briefcase className="h-4 w-4 md:h-5 md:w-5 text-muted-foreground flex-shrink-0" />
-                        <h3 className="font-bold text-xl md:text-2xl">
-                          {exp.company}
-                        </h3>
-                      </div>
-                      <p className="text-base md:text-lg font-semibold text-muted-foreground">
-                        {exp.role}
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-2 text-xs md:text-sm text-muted-foreground bg-muted px-3 md:px-4 py-1.5 md:py-2 rounded-full whitespace-nowrap self-start">
-                      <Calendar className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
-                      {exp.period}
-                    </div>
+                  <div className="min-w-0">
+                    <h3 className="type-title-sm text-foreground">
+                      {experience.company}
+                    </h3>
+                    <p className="type-small mt-1.5 text-muted-foreground">
+                      {experience.role} · {experience.location}
+                    </p>
                   </div>
-
-                  {/* Achievements */}
-                  <ul className="space-y-2 md:space-y-3">
-                    {exp.achievements.map((achievement, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start text-sm md:text-base text-muted-foreground"
-                      >
-                        <span className="inline-block w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-current mt-1.5 md:mt-2 mr-2 md:mr-3 flex-shrink-0 opacity-60" />
-                        <span>{achievement}</span>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
-              </div>
-            ))}
-          </div>
 
-          {/* Education */}
-          <div className="mt-12 md:mt-16 p-6 md:p-8 bg-background rounded-2xl border-2 border-border">
-            <h3 className="font-bold text-xl md:text-2xl mb-3 md:mb-4 flex items-center gap-2">
-              <span className="text-2xl md:text-3xl">🎓</span>
-              Education
-            </h3>
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 md:gap-4">
-              <div>
-                <p className="font-semibold text-base md:text-lg">
-                  {EDUCATION.degree}
-                </p>
-                <p className="text-sm md:text-base text-muted-foreground">
-                  {EDUCATION.institution}
-                </p>
-              </div>
-              <div className="text-muted-foreground bg-muted px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm whitespace-nowrap self-start">
-                {EDUCATION.period}
-              </div>
+                <span className="type-caption inline-flex w-fit shrink-0 items-center gap-2 rounded-full bg-muted px-3.5 py-2 text-muted-foreground">
+                  <Calendar className="h-3.5 w-3.5" aria-hidden="true" />
+                  {experience.period}
+                </span>
+              </header>
+
+              <ul className="mt-7 grid gap-x-12 gap-y-3.5 lg:grid-cols-2">
+                {experience.achievements.map((achievement) => (
+                  <li
+                    key={achievement}
+                    className="type-body flex gap-3 text-muted-foreground"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="mt-[0.65rem] h-1 w-1 shrink-0 rounded-full bg-foreground/35"
+                    />
+                    <span>{achievement}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+
+        <div
+          ref={education.ref}
+          className={cn(
+            "reveal surface-muted mt-5 flex flex-col gap-4 p-6 md:flex-row md:items-center md:justify-between md:p-8",
+            education.isVisible && "is-visible"
+          )}
+        >
+          <div className="flex items-start gap-4">
+            <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-forest-green/40 bg-forest-green/15 text-forest-green">
+              <GraduationCap className="h-5 w-5" aria-hidden="true" />
+            </span>
+            <div>
+              <h3 className="type-title-sm text-foreground">
+                {EDUCATION.degree}
+              </h3>
+              <p className="type-small mt-1.5 text-muted-foreground">
+                {EDUCATION.institution}
+              </p>
             </div>
           </div>
+
+          <span className="type-caption w-fit shrink-0 rounded-full border border-border/60 bg-background px-3.5 py-2 text-muted-foreground">
+            {EDUCATION.period}
+          </span>
         </div>
       </div>
     </section>
