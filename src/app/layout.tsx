@@ -1,21 +1,31 @@
 import type { Metadata, Viewport } from "next";
 import "@/index.css";
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { Providers } from "./providers";
+import { SITE_URL } from "@/lib/site";
+
+const TITLE = "Shaik Haneef Basha — Front End Developer";
+const DESCRIPTION =
+  "Portfolio of Shaik Haneef Basha — Frontend engineer with 8+ years building scalable, high-performance web applications and financial-product experiences.";
+const SOCIAL_DESCRIPTION =
+  "Frontend engineer with 8+ years of experience in React, Next.js, TypeScript and real-time data UI.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://haneefbasha.vercel.app"),
-  title: "Shaik Haneef Basha — Front End Developer",
-  description:
-    "Portfolio of Shaik Haneef Basha — Frontend engineer with 8+ years building scalable, high-performance web applications and financial-product experiences.",
+  // Absolute URLs in the tags below resolve against the deployed origin.
+  metadataBase: new URL(SITE_URL),
+  title: TITLE,
+  description: DESCRIPTION,
   authors: [{ name: "Shaik Haneef Basha" }],
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Shaik Haneef Basha — Front End Developer",
-    description:
-      "Frontend engineer with 8+ years of experience in React, Next.js, TypeScript and real-time data UI.",
+    title: TITLE,
+    description: SOCIAL_DESCRIPTION,
+    url: "/",
+    siteName: "Shaik Haneef Basha",
     type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: TITLE,
+    description: SOCIAL_DESCRIPTION,
   },
 };
 
@@ -35,17 +45,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // No providers: this is a single static page with no client-side state,
+  // toasts or tooltips, so the layout ships no client JavaScript at all.
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className="font-sans">
-        <Providers>
-          <TooltipProvider>
-            {children}
-            <Toaster />
-            <Sonner />
-          </TooltipProvider>
-        </Providers>
-      </body>
+    <html lang="en">
+      <body className="font-sans">{children}</body>
     </html>
   );
 }

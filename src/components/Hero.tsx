@@ -16,7 +16,7 @@ export const Hero = () => {
           <span className="eyebrow text-primary">{PERSONAL_INFO.title}</span>
 
           <h1 className="type-display mt-5 text-foreground [text-wrap:normal]">
-            Building digital
+            Building digital{" "}
             <br />
             experiences that matter.
           </h1>
