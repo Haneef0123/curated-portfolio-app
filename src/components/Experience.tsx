@@ -1,9 +1,6 @@
-"use client";
-
 import { Calendar, GraduationCap } from "lucide-react";
 import { SectionBadge } from "@/components/common/SectionBadge";
 import { EDUCATION, EXPERIENCES } from "@/lib/constants";
-import { useReveal } from "@/hooks/use-reveal";
 import { cn } from "@/lib/utils";
 
 /** Accent tile per role — the monogram reads like an app icon. */
@@ -14,9 +11,6 @@ const MONOGRAMS = [
 ] as const;
 
 export const Experience = () => {
-  const timeline = useReveal();
-  const education = useReveal();
-
   return (
     <section id="experience" className="section bg-secondary">
       <div className="shell">
@@ -30,19 +24,11 @@ export const Experience = () => {
           A timeline of my professional growth and key contributions.
         </p>
 
-        <div ref={timeline.ref} className="mt-14 space-y-5">
+        <div className="mt-14 space-y-5">
           {EXPERIENCES.map((experience, index) => (
             <article
               key={`${experience.company}-${experience.period}`}
-              className={cn(
-                "reveal surface p-6 md:p-8",
-                timeline.isVisible && "is-visible"
-              )}
-              style={{
-                transitionDelay: timeline.isVisible
-                  ? `${index * 90}ms`
-                  : "0ms",
-              }}
+              className="surface p-6 md:p-8"
             >
               <header className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                 <div className="flex min-w-0 items-start gap-4">
@@ -90,13 +76,7 @@ export const Experience = () => {
           ))}
         </div>
 
-        <div
-          ref={education.ref}
-          className={cn(
-            "reveal surface-muted mt-5 flex flex-col gap-4 p-6 md:flex-row md:items-center md:justify-between md:p-8",
-            education.isVisible && "is-visible"
-          )}
-        >
+        <div className="surface-muted mt-5 flex flex-col gap-4 p-6 md:flex-row md:items-center md:justify-between md:p-8">
           <div className="flex items-start gap-4">
             <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-forest-green/40 bg-forest-green/15 text-forest-green">
               <GraduationCap className="h-5 w-5" aria-hidden="true" />

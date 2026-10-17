@@ -1,15 +1,9 @@
-"use client";
-
 import { SectionBadge } from "@/components/common/SectionBadge";
 import { SKILLS } from "@/lib/constants/skills";
 import { CORE_EXPERTISE } from "@/lib/constants/personal";
-import { useReveal } from "@/hooks/use-reveal";
 import { cn } from "@/lib/utils";
 
 export const Skills = () => {
-  const grid = useReveal();
-  const expertise = useReveal();
-
   return (
     <section id="skills" className="section">
       <div className="shell">
@@ -23,21 +17,9 @@ export const Skills = () => {
           A focused set of technologies and tools I use to bring ideas to life.
         </p>
 
-        <div
-          ref={grid.ref}
-          className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
-        >
-          {SKILLS.map((skill, index) => (
-            <article
-              key={skill.title}
-              className={cn(
-                "reveal surface h-full p-6",
-                grid.isVisible && "is-visible"
-              )}
-              style={{
-                transitionDelay: grid.isVisible ? `${index * 70}ms` : "0ms",
-              }}
-            >
+        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {SKILLS.map((skill) => (
+            <article key={skill.title} className="surface h-full p-6">
               <h3 className="type-title-sm flex items-start gap-2.5 text-foreground lg:min-h-[2.32em]">
                 <span
                   aria-hidden="true"
@@ -70,13 +52,7 @@ export const Skills = () => {
           ))}
         </div>
 
-        <div
-          ref={expertise.ref}
-          className={cn(
-            "reveal surface-muted mt-12 p-6 md:p-8",
-            expertise.isVisible && "is-visible"
-          )}
-        >
+        <div className="surface-muted mt-12 p-6 md:p-8">
           <h3 className="type-small font-semibold text-foreground">
             Core areas of expertise
           </h3>

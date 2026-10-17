@@ -1,36 +1,7 @@
-"use client";
-
 import { SectionBadge } from "@/components/common/SectionBadge";
 import { ABOUT_STATS } from "@/lib/constants/personal";
-import { useCountUp } from "@/hooks/use-count-up";
-import { useReveal } from "@/hooks/use-reveal";
-import { cn } from "@/lib/utils";
-
-const Stat = ({
-  value,
-  label,
-  visible,
-}: {
-  value: number;
-  label: string;
-  visible: boolean;
-}) => {
-  const count = useCountUp(value, 1800, visible);
-
-  return (
-    <div>
-      <div className="tabular text-[2.5rem] font-semibold leading-none tracking-[-0.03em] text-foreground md:text-[3.25rem]">
-        {count}
-      </div>
-      <div className="type-small mt-3 text-muted-foreground">{label}</div>
-    </div>
-  );
-};
 
 export const About = () => {
-  const content = useReveal();
-  const stats = useReveal();
-
   return (
     <section id="about" className="section bg-secondary">
       <div className="shell">
@@ -40,13 +11,7 @@ export const About = () => {
           Turning ideas into pixel-perfect reality.
         </h2>
 
-        <div
-          ref={content.ref}
-          className={cn(
-            "reveal mt-8 max-w-[48rem] space-y-5",
-            content.isVisible && "is-visible"
-          )}
-        >
+        <div className="mt-8 max-w-[48rem] space-y-5">
           <p className="type-body text-muted-foreground">
             I'm a{" "}
             <span className="font-medium text-foreground">
@@ -81,20 +46,16 @@ export const About = () => {
           </p>
         </div>
 
-        <div
-          ref={stats.ref}
-          className={cn(
-            "reveal mt-16 grid grid-cols-1 gap-10 border-t border-border pt-10 sm:grid-cols-3 sm:gap-8",
-            stats.isVisible && "is-visible"
-          )}
-        >
+        <div className="mt-16 grid grid-cols-1 gap-10 border-t border-border pt-10 sm:grid-cols-3 sm:gap-8">
           {ABOUT_STATS.map((stat) => (
-            <Stat
-              key={stat.label}
-              value={stat.value}
-              label={stat.label}
-              visible={stats.isVisible}
-            />
+            <div key={stat.label}>
+              <div className="tabular text-[2.5rem] font-semibold leading-none tracking-[-0.03em] text-foreground md:text-[3.25rem]">
+                {stat.value}
+              </div>
+              <div className="type-small mt-3 text-muted-foreground">
+                {stat.label}
+              </div>
+            </div>
           ))}
         </div>
       </div>

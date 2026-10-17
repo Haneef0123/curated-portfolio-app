@@ -1,16 +1,8 @@
-"use client";
-
-import { ArrowRight } from "lucide-react";
-import profileImg from "@/assets/profile.jpg";
+import { ArrowRight } from "lucide-react";import profileImg from "@/assets/profile.jpg";
 import { PERSONAL_INFO, SOCIAL_LINKS } from "@/lib/constants/personal";
 import { SocialLinks } from "@/components/common/SocialLinks";
-import { useReveal } from "@/hooks/use-reveal";
-import { cn } from "@/lib/utils";
 
 export const Hero = () => {
-  const copy = useReveal();
-  const portrait = useReveal();
-
   return (
     <section id="top" className="relative overflow-hidden pt-14">
       {/* Soft wash so the translucent header has something to sit on */}
@@ -20,10 +12,7 @@ export const Hero = () => {
       />
 
       <div className="shell shell-wide relative grid items-center gap-14 py-16 md:grid-cols-[1.05fr_0.95fr] md:gap-16 md:py-20 lg:py-28">
-        <div
-          ref={copy.ref}
-          className={cn("reveal", copy.isVisible && "is-visible")}
-        >
+        <div>
           <span className="eyebrow text-primary">{PERSONAL_INFO.title}</span>
 
           <h1 className="type-display mt-5 text-foreground [text-wrap:normal]">
@@ -53,10 +42,7 @@ export const Hero = () => {
           <SocialLinks links={SOCIAL_LINKS} className="mt-10" />
         </div>
 
-        <div
-          ref={portrait.ref}
-          className={cn("reveal", portrait.isVisible && "is-visible")}
-        >
+        <div>
           <div className="relative mx-auto w-full max-w-[420px]">
             {/* Depth behind the portrait: a soft, coloured bloom */}
             <div

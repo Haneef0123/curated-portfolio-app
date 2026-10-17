@@ -309,7 +309,7 @@
     text-transform: uppercase;
   }
 
-  /* Keeps counting numerals from shifting width mid-animation */
+  /* Fixed-width numerals, so stat values share one optical rhythm */
   .tabular {
     font-variant-numeric: tabular-nums;
   }
@@ -435,28 +435,9 @@
     color: hsl(var(--foreground));
   }
 
-  /* ---- Scroll reveal --------------------------------------------------
-     Content is visible by default. Motion only arms the hidden state where
-     the user has not asked for reduced motion, so a JS failure or a
-     reduced-motion preference can never leave content invisible. */
-  .reveal {
-    opacity: 1;
-    transform: none;
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    .reveal {
-      opacity: 0;
-      transform: translate3d(0, 22px, 0);
-      transition: opacity 900ms var(--ease-apple),
-        transform 900ms var(--ease-apple);
-    }
-
-    .reveal.is-visible {
-      opacity: 1;
-      transform: none;
-    }
-  }
+  /* ---- Entrances ------------------------------------------------------
+     Deliberately none. Content renders at its final position from the
+     server: no opacity is gated on script or on scrolling into view. */
 }
 
 /* ==========================================================================
@@ -466,12 +447,6 @@
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-
-  .reveal {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
   }
 
   .btn,

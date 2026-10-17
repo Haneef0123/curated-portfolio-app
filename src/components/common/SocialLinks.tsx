@@ -1,5 +1,3 @@
-"use client";
-
 import { Github, Mail, type LucideIcon } from "lucide-react";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { cn } from "@/lib/utils";

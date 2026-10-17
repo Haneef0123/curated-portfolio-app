@@ -37,13 +37,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        {/* Scroll reveals are armed by CSS. If scripting is unavailable the
-            observer can never fire, so reveal everything. */}
-        <noscript>
-          <style>{`.reveal{opacity:1 !important;transform:none !important;}`}</style>
-        </noscript>
-      </head>
       <body className="font-sans">
         <Providers>
           <TooltipProvider>

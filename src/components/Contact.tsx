@@ -1,10 +1,7 @@
-"use client";
-
 import { ArrowRight, Mail, Phone } from "lucide-react";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { SectionBadge } from "@/components/common/SectionBadge";
 import { PERSONAL_INFO, SOCIAL_LINKS } from "@/lib/constants/personal";
-import { useReveal } from "@/hooks/use-reveal";
 import { cn } from "@/lib/utils";
 import type { IconComponent } from "@/types";
 
@@ -50,9 +47,6 @@ const CONTACT_METHODS: ContactMethod[] = [
 ];
 
 export const Contact = () => {
-  const methods = useReveal();
-  const cta = useReveal();
-
   return (
     <section id="contact" className="section bg-secondary">
       <div className="shell">
@@ -67,13 +61,7 @@ export const Contact = () => {
           or potential collaborations.
         </p>
 
-        <div
-          ref={methods.ref}
-          className={cn(
-            "reveal mt-14 grid gap-4 sm:grid-cols-3",
-            methods.isVisible && "is-visible"
-          )}
-        >
+        <div className="mt-14 grid gap-4 sm:grid-cols-3">
           {CONTACT_METHODS.map((method) => (
             <a
               key={method.label}
@@ -102,13 +90,7 @@ export const Contact = () => {
           ))}
         </div>
 
-        <div
-          ref={cta.ref}
-          className={cn(
-            "reveal mt-5 rounded-3xl bg-foreground px-6 py-12 text-center md:px-12 md:py-16",
-            cta.isVisible && "is-visible"
-          )}
-        >
+        <div className="mt-5 rounded-3xl bg-foreground px-6 py-12 text-center md:px-12 md:py-16">
           <h3 className="type-title-sm text-background">
             Let's build something great together.
           </h3>

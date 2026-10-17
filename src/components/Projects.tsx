@@ -1,15 +1,9 @@
-"use client";
-
 import { ArrowUpRight, Check } from "lucide-react";
 import { SectionBadge } from "@/components/common/SectionBadge";
 import { OTHER_ACHIEVEMENTS, PROJECTS } from "@/lib/constants/projects";
-import { useReveal } from "@/hooks/use-reveal";
 import { cn } from "@/lib/utils";
 
 export const Projects = () => {
-  const grid = useReveal();
-  const highlights = useReveal();
-
   return (
     <section id="projects" className="section">
       <div className="shell">
@@ -24,20 +18,11 @@ export const Projects = () => {
           user-focused applications.
         </p>
 
-        <div
-          ref={grid.ref}
-          className="mt-14 grid gap-5 md:grid-cols-2"
-        >
-          {PROJECTS.map((project, index) => (
+        <div className="mt-14 grid gap-5 md:grid-cols-2">
+          {PROJECTS.map((project) => (
             <article
               key={project.title}
-              className={cn(
-                "reveal surface flex h-full flex-col p-6 md:p-8",
-                grid.isVisible && "is-visible"
-              )}
-              style={{
-                transitionDelay: grid.isVisible ? `${index * 80}ms` : "0ms",
-              }}
+              className="surface flex h-full flex-col p-6 md:p-8"
             >
               <span
                 className={cn(
@@ -73,13 +58,7 @@ export const Projects = () => {
           ))}
         </div>
 
-        <div
-          ref={highlights.ref}
-          className={cn(
-            "reveal surface-muted mt-5 p-6 md:p-8",
-            highlights.isVisible && "is-visible"
-          )}
-        >
+        <div className="surface-muted mt-5 p-6 md:p-8">
           <h3 className="type-title-sm text-foreground">
             Other notable achievements
           </h3>
